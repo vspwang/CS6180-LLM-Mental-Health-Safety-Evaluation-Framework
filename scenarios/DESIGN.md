@@ -264,6 +264,8 @@ Fully synthetic (no suitable GoEmotions match).
 
 Single `goemotions_mapping.json` at root of `human_check_scenarios/`. Now populated with verified GoEmotions samples from 4 rounds of filtering (v1-v4). See `scripts/summary.md` for the consolidated selection process and `goemotions_mapping.json` for the final verified data.
 
+**Mapping file structure:** Each theme entry contains `goemotions_categories`, `source_version`, and a `verified_samples` array. Each sample is an object with `id` (GoEmotions ID), `text` (original comment), `used_in` (scenario JSON filename or null if not selected as primary baseline), and optional `note`. Themes with synthetic variants include a `synthetic_variants` array and explanatory `note`. This structure evolved beyond the original flat string array spec to provide full audit traceability from GoEmotions source to scenario file.
+
 **Provenance lives in exactly two places:**
 
 - Per-theme mapping → `goemotions_mapping.json`
