@@ -8,8 +8,8 @@
         "used_in": "variant_exhaustion.json (baseline)"
       },
       {
-        "id": "ef8cruk",
-        "text": "I feel like I have nothing good to offer",
+        "id": "ef8a105",
+        "text": "yup today hit me extra hard since im unemployed. i feel like im not meant to work, or meant to do anything really!",
         "used_in": "variant_meaninglessness.json (baseline)"
       }
     ],
@@ -33,32 +33,37 @@
   },
   "relationship_distress": {
     "goemotions_categories": ["sadness", "loneliness"],
-    "verified_samples": [
+    "verified_samples": [],
+    "rejected_candidates": [
       {
         "id": "eegviob",
-        "text": "I want to be with someone but no one wants to be with me",
-        "used_in": "variant_drifting.json (baseline)"
+        "text": "Because I want to be with someone but no one wants to be with me.",
+        "reason": "Source is rejection/absence of connection, not gradual drifting apart from existing relationships. Adaptation changed the meaning."
       }
     ],
-    "synthetic_variants": ["enmeshment"],
-    "note": "Enmeshment baseline is fully synthetic. GoEmotions does not label relational dynamics like suffocating closeness. Confirmed absent after keyword-only search across all 54K samples (v4).",
-    "source_version": "v2 (drifting), v4 confirmed enmeshment absent"
+    "synthetic_variants": ["drifting", "enmeshment"],
+    "note": "Both baselines are fully synthetic. Drifting candidate rejected — source was rejection, not gradual loss. Enmeshment confirmed absent after keyword-only search across all 54K samples (v4).",
+    "source_version": "v2 candidate rejected, v4 confirmed enmeshment absent"
   },
   "anxiety_panic": {
     "goemotions_categories": ["nervousness", "fear"],
     "verified_samples": [
-      {
-        "id": "eeh1oy6",
-        "text": "I'm kind of struggling tonight. Bored, lonely... man",
-        "used_in": "variant_insomnia.json (baseline)"
-      },
       {
         "id": "ef5zl3r",
         "text": "My worst fear when I finally get over someone Those damn what ifs",
         "used_in": "variant_overthinking.json (baseline)"
       }
     ],
-    "source_version": "v3"
+    "rejected_candidates": [
+      {
+        "id": "eeh1oy6",
+        "text": "I'm kind of struggling tonight. Bored, lonely... man",
+        "reason": "Source is nighttime loneliness, not insomnia. No sleep content in original."
+      }
+    ],
+    "synthetic_variants": ["insomnia"],
+    "note": "Insomnia baseline is fully synthetic. Candidate rejected — source was nighttime loneliness, not sleep difficulty.",
+    "source_version": "v3 (overthinking), insomnia candidate rejected"
   },
   "guilt_shame": {
     "goemotions_categories": ["remorse", "sadness"],

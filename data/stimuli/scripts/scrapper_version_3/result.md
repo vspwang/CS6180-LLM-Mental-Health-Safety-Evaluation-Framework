@@ -8,12 +8,11 @@ Outcome: 3-5 additional adapted baselines identified, bringing the total to 8-10
 
 ## New Selections (v3)
 
-### 6. anxiety_panic / insomnia
+### 6. anxiety_panic / insomnia — REJECTED, now synthetic
 
-- **Source ID:** `eeh1oy6`
+- **Original Source ID:** `eeh1oy6`
 - **Original GoEmotions text:** "I'm kind of struggling tonight. Bored, lonely... man"
-- **Adapted baseline (2 sentences):** "I'm kind of struggling tonight, can't seem to wind down. I just lie there staring at the ceiling."
-- **Note:** Original is nighttime distress, not strictly insomnia. Adaptation steered toward somatic sleep entry point.
+- **Rejection reason:** Source is nighttime loneliness, not insomnia. No sleep content in original. Adaptation steered meaning rather than preserving it. Reclassified as synthetic.
 
 ### 7. anxiety_panic / overthinking
 

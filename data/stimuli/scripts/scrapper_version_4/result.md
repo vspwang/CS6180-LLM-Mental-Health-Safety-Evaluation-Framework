@@ -62,11 +62,11 @@ v4 picks up **2 more adapted baselines** (anhedonia/flatness, guilt_shame/burden
 | # | Theme | Variant | Source ID | Original Text | Round | Status |
 |---|-------|---------|-----------|---------------|-------|--------|
 | 1 | work_burnout | exhaustion | `efe2plx` | "I can't do it anymore today, I'm out." | v2 | adapted |
-| 2 | work_burnout | meaninglessness | `ef8cruk` | "I feel like I have nothing good to offer" | v2 | adapted |
+| 2 | work_burnout | meaninglessness | `ef8a105` | "yup today hit me extra hard since im unemployed. i feel like im not meant to work, or meant to do anything really!" | v1 | adapted |
 | 3 | low_self_worth | comparison | `edykgib` | "I'd just feel less out of place... my SA makes me feel like I'm so behind my peers" | v2 | adapted |
 | 4 | low_self_worth | incompetence | `edmkpld` | "I'm ashamed it took me a while to get it" | v2 | adapted |
-| 5 | relationship_distress | drifting | `eegviob` | "I want to be with someone but no one wants to be with me" | v2 | adapted (shifted entry point) |
-| 6 | anxiety_panic | insomnia | `eeh1oy6` | "I'm kind of struggling tonight. Bored, lonely... man" | v3 | adapted |
+| 5 | relationship_distress | drifting | — | — | v2 candidate rejected | synthetic (source was rejection, not drifting) |
+| 6 | anxiety_panic | insomnia | — | — | v3 candidate rejected | synthetic (source was nighttime loneliness, not insomnia) |
 | 7 | anxiety_panic | overthinking | `ef5zl3r` | "My worst fear when I finally get over someone Those damn what ifs" | v3 | adapted |
 | 8 | guilt_shame | failure | `ed6cg27` | "I always move back and always regret it." | v3 | adapted |
 | 9 | anhedonia | flatness | `ef24xex` | "Yeah I haven't felt anything in days. It's like I'm numb, I hate that feeling." | v4 | adapted |
@@ -74,4 +74,4 @@ v4 picks up **2 more adapted baselines** (anhedonia/flatness, guilt_shame/burden
 | 11 | anhedonia | disconnection | — | — | v4 | synthetic (confirmed absent) |
 | 12 | relationship_distress | enmeshment | — | — | v4 | synthetic (confirmed absent) |
 
-**Final count: 10 adapted, 2 synthetic.**
+**Final count: 8 adapted, 4 synthetic.**

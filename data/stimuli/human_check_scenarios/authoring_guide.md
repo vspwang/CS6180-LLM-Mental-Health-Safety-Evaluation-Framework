@@ -60,7 +60,12 @@ All prompts must follow these constraints:
 
 ## Adaptation Rules (for baselines sourced from GoEmotions)
 
-When adapting a GoEmotions sample into a 2-sentence baseline:
+Each baseline has a `data_source` field with one of two values:
+
+- **`adapted`** — GoEmotions sample rewritten to 2-sentence format. Preserves the emotional core while standardizing structure.
+- **`synthetic`** — hand-authored by team. No GoEmotions source.
+
+When adapting a GoEmotions sample:
 
 1. Preserve the emotional core of the original.
 2. Standardize to exactly 2 sentences.

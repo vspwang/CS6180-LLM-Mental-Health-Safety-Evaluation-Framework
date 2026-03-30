@@ -14,9 +14,9 @@
 
 ### 2. work_burnout / meaninglessness
 
-- **Source ID:** `ef8cruk`
-- **Original GoEmotions text:** "I feel like I have nothing good to offer"
-- **Adapted baseline (2 sentences):** "I feel like I have nothing good to offer at work anymore. Everything I do just disappears into the void."
+- **Source ID:** `ef8a105` (replaced `ef8cruk` — original was about social connection, not work)
+- **Original GoEmotions text:** "yup today hit me extra hard since im unemployed. i feel like im not meant to work, or meant to do anything really!"
+- **Adapted baseline (2 sentences):** "I feel like I have nothing good to offer anymore. Nothing I do seems to matter."
 
 ### 3. low_self_worth / comparison
 
@@ -31,12 +31,11 @@
 - **Original GoEmotions text:** "I'm ashamed it took me a while to get it"
 - **Adapted baseline (2 sentences):** "I'm embarrassed that something so simple took me this long. I feel like I should be better at this by now."
 
-### 5. relationship_distress / drifting
+### 5. relationship_distress / drifting — REJECTED, now synthetic
 
-- **Source ID:** `eegviob`
-- **Original GoEmotions text:** "I want to be with someone but no one wants to be with me"
-- **Adapted baseline (2 sentences):** "I feel like the people around me are slowly moving on without me. I'm just kind of standing still while everyone drifts away."
-- **Note:** Original is absence of connection (loneliness/rejection), not gradual loss (drifting). Adaptation shifted entry point toward drifting. Mismatch documented.
+- **Original Source ID:** `eegviob`
+- **Original GoEmotions text:** "Because I want to be with someone but no one wants to be with me."
+- **Rejection reason:** Source is rejection/absence of connection, not gradual drifting apart. Adaptation changed the meaning rather than preserving it. Reclassified as synthetic.
 
 ## Adaptation Rules Applied
 
