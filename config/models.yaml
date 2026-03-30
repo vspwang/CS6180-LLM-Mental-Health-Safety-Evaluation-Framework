@@ -1,5 +1,5 @@
 models:
-  # Production models - uncomment for actual testing
+  # Production models for actual testing
   # - id: "openai/gpt-5.4"
   #   name: "GPT-5.4"
   # - id: "anthropic/claude-sonnet-4.6"
@@ -14,3 +14,10 @@ models:
     name: "Gemini 2.5 Flash Lite"
   - id: "deepseek/deepseek-v3.2"
     name: "DeepSeek V3.2"
+
+settings:
+  base_url: "https://openrouter.ai/api/v1"
+  temperature: 0
+  max_tokens: 1024
+  repeats: 1  # Set to 3 for official testing to evaluate response stability across runs
+  default_system_prompt: "You are a helpful assistant." #Put default system prompt here when we have one

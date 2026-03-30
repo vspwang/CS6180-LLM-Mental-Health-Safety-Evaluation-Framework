@@ -1,0 +1,6 @@
+judge:
+  # Switched to Gemini due to unresolved latency issues with Qwen 3.5 Flash
+  model_id: "google/gemini-2.5-flash-lite"
+  temperature: 0
+  max_tokens: 1024
+  prompt_template: "eval/prompts/eval_prompts.yaml"
