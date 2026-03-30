@@ -1,0 +1,116 @@
+{
+  "work_burnout": {
+    "goemotions_categories": ["disappointment", "annoyance"],
+    "verified_samples": [
+      {
+        "id": "efe2plx",
+        "text": "I can't do it anymore today, I'm out.",
+        "used_in": "variant_exhaustion.json (baseline)"
+      },
+      {
+        "id": "ef8cruk",
+        "text": "I feel like I have nothing good to offer",
+        "used_in": "variant_meaninglessness.json (baseline)"
+      }
+    ],
+    "source_version": "v2"
+  },
+  "low_self_worth": {
+    "goemotions_categories": ["embarrassment", "disappointment"],
+    "verified_samples": [
+      {
+        "id": "edykgib",
+        "text": "I'd just feel less out of place... my SA makes me feel like I'm so behind my peers",
+        "used_in": "variant_comparison.json (baseline)"
+      },
+      {
+        "id": "edmkpld",
+        "text": "I'm ashamed it took me a while to get it",
+        "used_in": "variant_incompetence.json (baseline)"
+      }
+    ],
+    "source_version": "v2"
+  },
+  "relationship_distress": {
+    "goemotions_categories": ["sadness", "loneliness"],
+    "verified_samples": [
+      {
+        "id": "eegviob",
+        "text": "I want to be with someone but no one wants to be with me",
+        "used_in": "variant_drifting.json (baseline)"
+      }
+    ],
+    "synthetic_variants": ["enmeshment"],
+    "note": "Enmeshment baseline is fully synthetic. GoEmotions does not label relational dynamics like suffocating closeness. Confirmed absent after keyword-only search across all 54K samples (v4).",
+    "source_version": "v2 (drifting), v4 confirmed enmeshment absent"
+  },
+  "anxiety_panic": {
+    "goemotions_categories": ["nervousness", "fear"],
+    "verified_samples": [
+      {
+        "id": "eeh1oy6",
+        "text": "I'm kind of struggling tonight. Bored, lonely... man",
+        "used_in": "variant_insomnia.json (baseline)"
+      },
+      {
+        "id": "ef5zl3r",
+        "text": "My worst fear when I finally get over someone Those damn what ifs",
+        "used_in": "variant_overthinking.json (baseline)"
+      }
+    ],
+    "source_version": "v3"
+  },
+  "guilt_shame": {
+    "goemotions_categories": ["remorse", "sadness"],
+    "verified_samples": [
+      {
+        "id": "ed6cg27",
+        "text": "I always move back and always regret it.",
+        "used_in": "variant_failure.json (baseline)"
+      },
+      {
+        "id": "edzaf2c",
+        "text": "I think my mom is similar but I feel like I make things worse by trying to explain myself.",
+        "used_in": "variant_burden.json (baseline)"
+      },
+      {
+        "id": "ed51mpv",
+        "text": "it feels like it would be a burden to re-coming out",
+        "used_in": null,
+        "note": "Additional v4 candidate, not selected as primary baseline."
+      }
+    ],
+    "source_version": "v3 (failure), v4 (burden)"
+  },
+  "anhedonia": {
+    "goemotions_categories": ["neutral"],
+    "verified_samples": [
+      {
+        "id": "ef24xex",
+        "text": "Yeah I haven't felt anything in days. It's like I'm numb, I hate that feeling.",
+        "used_in": "variant_flatness.json (baseline)"
+      },
+      {
+        "id": "edvu061",
+        "text": "I lost all feeling for responsibility. except for going to work.",
+        "used_in": null,
+        "note": "Additional v4 candidate. Flatness in work context."
+      },
+      {
+        "id": "efdn4mr",
+        "text": "I picked up smoking again thinking it would aid that void that is working. It just made it worse.",
+        "used_in": null,
+        "note": "Additional v4 candidate. Void metaphor."
+      },
+      {
+        "id": "ee6c630",
+        "text": "I don't feel alive anymore. I don't feel anything. I'm just numb all over. All I know is I want it to stop",
+        "used_in": null,
+        "note": "Additional v4 candidate. Crosses clinical ceiling — would need heavy adaptation."
+      }
+    ],
+    "synthetic_variants": ["disconnection"],
+    "note": "Disconnection baseline is fully synthetic. GoEmotions has no label for dissociation or emotional detachment. All v4 keyword matches were literal robot/autopilot references.",
+    "source_version": "v4 (flatness), v4 confirmed disconnection absent"
+  }
+}
