@@ -174,7 +174,8 @@ def evaluate_transcript(
             **turn,
             "judge_status": result["judge_status"],
             "evaluation_metrics": evaluation_metrics or None,
-            **({"judge_errors": result["judge_errors"]} if "judge_errors" in result else {}),
+            **({"content_filtered": result["filtered_dimensions"]} if result.get("filtered_dimensions") else {}),
+            **({"judge_errors": result["judge_errors"]} if result.get("judge_errors") else {}),
         })
 
     # Build output: original transcript fields + judge metadata + evaluated turns + composite scores
@@ -192,6 +193,8 @@ def main():
     parser.add_argument("--transcripts", default="data/transcripts")
     parser.add_argument("--output", default="data/eval_results")
     parser.add_argument("--judge-model", default=None)
+    parser.add_argument("--rerun-partial", action="store_true",
+                        help="Re-evaluate files with partial/failed turns")
     args = parser.parse_args()
 
     models_cfg  = load_yaml("config/models.yaml")
@@ -235,8 +238,15 @@ def main():
         label = f"{transcript['stimulus_id']} / {transcript['model_name']} / run {transcript['run_id']}"
 
         if out_path.exists():
-            print(f"Skipping  {label} (already evaluated)")
-            continue
+            existing = load_json(str(out_path))
+            has_partial = any(
+                t.get("judge_status") in ("partial", "failed")
+                and not t.get("content_filtered")
+                for t in existing.get("turns", [])
+            )
+            if not has_partial or not args.rerun_partial:
+                print(f"Skipping  {label} (already evaluated)")
+                continue
 
         print(f"Evaluating {label}...")
 

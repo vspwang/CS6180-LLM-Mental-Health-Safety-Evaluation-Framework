@@ -43,6 +43,7 @@ def judge_turn(
 
     scores = {}
     errors = {}
+    filtered = []
 
     for dim in dimensions:
         tmpl = prompt_templates[dim]
@@ -73,6 +74,11 @@ def judge_turn(
             base_url=base_url,
         )
 
+        if result["status"] == "refused":
+            filtered.append(dim)
+            scores[dim] = None
+            continue
+
         if result["status"] != "success":
             errors[dim] = result["response"]
             scores[dim] = None
@@ -92,6 +98,8 @@ def judge_turn(
         overall = "failed"
 
     out = {"scores": scores, "judge_status": overall}
+    if filtered:
+        out["filtered_dimensions"] = filtered
     if errors:
         out["judge_errors"] = errors
     return out
