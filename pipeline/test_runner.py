@@ -3,8 +3,8 @@ import logging
 from datetime import datetime, timezone
 from pathlib import Path
 
-from src.api_client import call_model
-from src.utils import load_json, save_json
+from pipeline.api_client import call_model
+from pipeline.utils import load_json, save_json
 
 logger = logging.getLogger(__name__)
 
@@ -12,11 +12,11 @@ logger = logging.getLogger(__name__)
 def run_single_turn(scenario: dict, model_config: dict, settings: dict) -> dict:
     """Run all turns of a scenario independently (single-turn mode) against one model."""
     system_prompt = scenario.get(
-        "system_prompt", settings["test"]["default_system_prompt"]
+        "system_prompt", settings["default_system_prompt"]
     )
-    base_url = settings["openrouter"]["base_url"]
-    temperature = settings["test"]["temperature"]
-    max_tokens = settings["test"]["max_tokens"]
+    base_url = settings["base_url"]
+    temperature = settings["temperature"]
+    max_tokens = settings["max_tokens"]
 
     turns_output = []
     total_input_tokens = 0
@@ -42,9 +42,10 @@ def run_single_turn(scenario: dict, model_config: dict, settings: dict) -> dict:
         turns_output.append(
             {
                 "turn": turn["turn"],
-                "escalation_level": turn["escalation_level"],
+                "severity_tier": turn.get("severity_tier"),
+                "data_source": turn.get("data_source"),
                 "user_message": turn["user_message"],
-                "expected_risk": turn["expected_risk"],
+                "word_count": turn.get("word_count"),
                 "model_response": result["response"],
                 "status": result["status"],
                 "response_time_ms": result["response_time_ms"],
@@ -53,7 +54,10 @@ def run_single_turn(scenario: dict, model_config: dict, settings: dict) -> dict:
         )
 
     return {
-        "scenario_id": scenario["scenario_id"],
+        "stimulus_id": scenario["stimulus_id"],
+        "theme": scenario.get("theme"),
+        "variant": scenario.get("variant"),
+        "goemotions_categories": scenario.get("goemotions_categories"),
         "model": model_config["id"],
         "model_name": model_config["name"],
         "run_id": None,  # filled in by run_batch
@@ -73,17 +77,16 @@ def run_single_turn(scenario: dict, model_config: dict, settings: dict) -> dict:
 
 
 def run_batch(
-    scenarios_dir: str,
+    stimuli_files: list,
     models: list,
     settings: dict,
     output_dir: str,
 ) -> None:
-    scenario_files = sorted(Path(scenarios_dir).glob("*.json"))
-    if not scenario_files:
-        logger.error("No .json scenario files found in %s", scenarios_dir)
+    if not stimuli_files:
+        logger.error("No stimulus files provided")
         return
 
-    repeats = settings["test"]["repeats"]
+    repeats = settings["repeats"]
 
     total_completed = 0
     total_skipped = 0
@@ -91,27 +94,33 @@ def run_batch(
     total_input_tokens = 0
     total_output_tokens = 0
 
-    for scenario_path in scenario_files:
-        scenario = load_json(str(scenario_path))
-        scenario_id = scenario["scenario_id"]
+    for stimulus_path in stimuli_files:
+        scenario = load_json(str(stimulus_path))
+        stimulus_id = scenario["stimulus_id"]
 
         for model_config in models:
             model_name = model_config["name"]
 
             for run_id in range(1, repeats + 1):
+                model_slug = model_name.replace(" ", "")
                 out_path = (
                     Path(output_dir)
-                    / scenario_id
-                    / model_name
-                    / f"run_{run_id}.json"
+                    / stimulus_id
+                    / f"transcript_{stimulus_id}_{model_slug}.json"
                 )
 
                 if out_path.exists():
-                    total_skipped += 1
-                    continue
+                    existing = load_json(str(out_path))
+                    has_errors = any(
+                        t.get("status") in ("error", "timeout")
+                        for t in existing.get("turns", [])
+                    )
+                    if not has_errors:
+                        total_skipped += 1
+                        continue
 
                 print(
-                    f"Running {scenario_id} on {model_name}, run {run_id}/{repeats}..."
+                    f"Running {stimulus_id} on {model_name}, run {run_id}/{repeats}..."
                 )
 
                 try:
@@ -130,7 +139,7 @@ def run_batch(
 
                 except Exception as e:
                     logger.error(
-                        "Failed %s / %s / run %d: %s", scenario_id, model_name, run_id, e
+                        "Failed %s / %s / run %d: %s", stimulus_id, model_name, run_id, e
                     )
                     total_errors += 1
 

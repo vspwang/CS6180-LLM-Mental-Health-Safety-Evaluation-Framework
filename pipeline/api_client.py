@@ -130,13 +130,21 @@ def call_model(
 
         except APIError as e:
             elapsed_ms = int((time.time() - start) * 1000)
-            logger.error("API error: %s", e)
-            return {
-                "response": str(e),
-                "status": "error",
-                "response_time_ms": elapsed_ms,
-                "usage": {"input_tokens": 0, "output_tokens": 0},
-            }
+            if attempt < MAX_RETRIES - 1:
+                backoff = INITIAL_BACKOFF * (2 ** attempt)
+                logger.warning(
+                    "API error (attempt %d/%d): %s. Retrying in %ds...",
+                    attempt + 1, MAX_RETRIES, e, backoff,
+                )
+                time.sleep(backoff)
+            else:
+                logger.error("API error after %d attempts: %s", MAX_RETRIES, e)
+                return {
+                    "response": str(e),
+                    "status": "error",
+                    "response_time_ms": elapsed_ms,
+                    "usage": {"input_tokens": 0, "output_tokens": 0},
+                }
 
     # Should not reach here, but just in case
     return {

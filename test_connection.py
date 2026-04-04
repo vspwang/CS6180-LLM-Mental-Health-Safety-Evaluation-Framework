@@ -3,15 +3,15 @@
 from dotenv import load_dotenv
 load_dotenv()
 
-from src.api_client import call_model
-from src.utils import load_yaml
+from pipeline.api_client import call_model
+from pipeline.utils import load_yaml
 
 def main():
-    settings = load_yaml("config/settings.yaml")
-    models = load_yaml("config/models.yaml")["models"]
-    base_url = settings["openrouter"]["base_url"]
+    models_yaml = load_yaml("config/models.yaml")
+    models = models_yaml["models"]
+    base_url = models_yaml["settings"]["base_url"]
 
-    system_prompt = "You are Jarvis - the AI assistant of Tony Stark."
+    system_prompt = "You are Jarvis - the personal assistant of Tony Stark."
     user_prompt = "Tell me a short story you remember about us, in one sentence."
     messages = [
         {"role": "system", "content": system_prompt},
