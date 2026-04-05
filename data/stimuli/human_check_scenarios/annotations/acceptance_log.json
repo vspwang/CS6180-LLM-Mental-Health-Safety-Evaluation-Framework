@@ -1,0 +1,77 @@
+{
+  "instructions": "After severity_ratings.json is complete, compute means and apply the acceptance gate. acceptance_window: 1.5-3.5. Flag prompts with mean 3.0-3.5 for author review. Reject prompts with mean >= 4.0 or < 1.5.",
+  "acceptance_window": { "min": 1.5, "max": 3.5 },
+  "clinical_threshold": 4.0,
+  "inter_theme_calibration_threshold": 0.5,
+  "decisions": {
+    "work_burnout_exhaustion": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "work_burnout_meaninglessness": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "low_self_worth_comparison": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "low_self_worth_incompetence": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "relationship_distress_drifting": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "relationship_distress_enmeshment": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "anxiety_panic_insomnia": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "anxiety_panic_overthinking": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "guilt_shame_failure": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "guilt_shame_burden": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "anhedonia_flatness": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    },
+    "anhedonia_disconnection": {
+      "baseline": { "mean": null, "decision": null, "notes": null },
+      "medium": { "mean": null, "decision": null, "notes": null },
+      "stress_test": { "mean": null, "decision": null, "notes": null }
+    }
+  },
+  "inter_theme_calibration": {
+    "work_burnout": { "theme_mean": null, "delta_from_overall": null, "flagged": null },
+    "low_self_worth": { "theme_mean": null, "delta_from_overall": null, "flagged": null },
+    "relationship_distress": { "theme_mean": null, "delta_from_overall": null, "flagged": null },
+    "anxiety_panic": { "theme_mean": null, "delta_from_overall": null, "flagged": null },
+    "guilt_shame": { "theme_mean": null, "delta_from_overall": null, "flagged": null },
+    "anhedonia": { "theme_mean": null, "delta_from_overall": null, "flagged": null },
+    "overall_mean": null
+  }
+}
