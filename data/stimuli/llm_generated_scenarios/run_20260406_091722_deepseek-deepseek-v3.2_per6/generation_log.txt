@@ -1,0 +1,107 @@
+============================================================
+Phase 2: LLM Few-Shot Generation Pipeline
+============================================================
+Run dir:    /Users/chenchenfeng/Desktop/Spring_2026/CS6180/03_Final_Project/CS6180-LLM-Mental-Health-Safety-Evaluation-Framework/data/stimuli/scripts/scenario_pipeline/../../llm_generated_scenarios/run_20260406_091722_deepseek-deepseek-v3.2_per6
+Model:      deepseek/deepseek-v3.2
+Temperature:0.4
+Per theme:  6
+Themes:     ['anhedonia', 'anxiety_panic', 'guilt_shame', 'low_self_worth', 'relationship_distress', 'work_burnout']
+Anchors:    7 available
+Total:      36 scenarios, 108 prompts
+============================================================
+
+[anhedonia]
+  1/6 generating (anchor: The speaker opens by referencing a specific recent...)
+           SAVED: gen_anhedonia_001.json
+  2/6 generating (anchor: The speaker opens by contrasting with how things u...)
+           SAVED: gen_anhedonia_002.json
+  3/6 generating (anchor: The speaker opens with a failed attempt to feel be...)
+           SAVED: gen_anhedonia_003.json
+  4/6 generating (anchor: The speaker opens by describing a physical feeling...)
+           SAVED: gen_anhedonia_004.json
+  5/6 generating (anchor: The speaker opens with a conclusion they've reache...)
+           SAVED: gen_anhedonia_005.json
+  6/6 generating (anchor: The speaker opens with something they noticed abou...)
+           SAVED: gen_anhedonia_006.json
+
+[anxiety_panic]
+  1/6 generating (anchor: The speaker opens with something someone else said...)
+           SAVED: gen_anxiety_panic_001.json
+  2/6 generating (anchor: The speaker opens with a conclusion they've reache...)
+           SAVED: gen_anxiety_panic_002.json
+  3/6 generating (anchor: The speaker opens by describing a physical feeling...)
+           SAVED: gen_anxiety_panic_003.json
+  4/6 generating (anchor: The speaker opens with something they noticed abou...)
+           SAVED: gen_anxiety_panic_004.json
+  5/6 generating (anchor: The speaker opens by referencing a specific recent...)
+           SAVED: gen_anxiety_panic_005.json
+  6/6 generating (anchor: The speaker opens with a failed attempt to feel be...)
+           SAVED: gen_anxiety_panic_006.json
+
+[guilt_shame]
+  1/6 generating (anchor: The speaker opens with something they noticed abou...)
+           SAVED: gen_guilt_shame_001.json
+  2/6 generating (anchor: The speaker opens with a failed attempt to feel be...)
+           SAVED: gen_guilt_shame_002.json
+  3/6 generating (anchor: The speaker opens by referencing a specific recent...)
+           SAVED: gen_guilt_shame_003.json
+  4/6 generating (anchor: The speaker opens with something someone else said...)
+           SAVED: gen_guilt_shame_004.json
+  5/6 generating (anchor: The speaker opens with a conclusion they've reache...)
+           SAVED: gen_guilt_shame_005.json
+  6/6 generating (anchor: The speaker opens by contrasting with how things u...)
+           SAVED: gen_guilt_shame_006.json
+
+[low_self_worth]
+  1/6 generating (anchor: The speaker opens by contrasting with how things u...)
+           SAVED: gen_low_self_worth_001.json
+  2/6 generating (anchor: The speaker opens with a failed attempt to feel be...)
+           SAVED: gen_low_self_worth_002.json
+  3/6 generating (anchor: The speaker opens by referencing a specific recent...)
+           SAVED: gen_low_self_worth_003.json
+  4/6 generating (anchor: The speaker opens with something they noticed abou...)
+           SAVED: gen_low_self_worth_004.json
+  5/6 generating (anchor: The speaker opens with something someone else said...)
+           SAVED: gen_low_self_worth_005.json
+  6/6 generating (anchor: The speaker opens with a conclusion they've reache...)
+           SAVED: gen_low_self_worth_006.json
+
+[relationship_distress]
+  1/6 generating (anchor: The speaker opens by referencing a specific recent...)
+           SAVED: gen_relationship_distress_001.json
+  2/6 generating (anchor: The speaker opens by contrasting with how things u...)
+           SAVED: gen_relationship_distress_002.json
+  3/6 generating (anchor: The speaker opens with something they noticed abou...)
+           SAVED: gen_relationship_distress_003.json
+  4/6 generating (anchor: The speaker opens with a failed attempt to feel be...)
+           SAVED: gen_relationship_distress_004.json
+  5/6 generating (anchor: The speaker opens by describing a physical feeling...)
+           SAVED: gen_relationship_distress_005.json
+  6/6 generating (anchor: The speaker opens with a conclusion they've reache...)
+           SAVED: gen_relationship_distress_006.json
+
+[work_burnout]
+  1/6 generating (anchor: The speaker opens by referencing a specific recent...)
+           SAVED: gen_work_burnout_001.json
+  2/6 generating (anchor: The speaker opens by contrasting with how things u...)
+           SAVED: gen_work_burnout_002.json
+  3/6 generating (anchor: The speaker opens with a failed attempt to feel be...)
+           SAVED: gen_work_burnout_003.json
+  4/6 generating (anchor: The speaker opens with something they noticed abou...)
+           SAVED: gen_work_burnout_004.json
+  5/6 generating (anchor: The speaker opens by describing a physical feeling...)
+           SAVED: gen_work_burnout_005.json
+  6/6 generating (anchor: The speaker opens with something someone else said...)
+           SAVED: gen_work_burnout_006.json
+
+============================================================
+RESULTS
+============================================================
+Passed:    36/36
+Failed:    0/36
+Pass rate: 100.0%
+
+Output:    /Users/chenchenfeng/Desktop/Spring_2026/CS6180/03_Final_Project/CS6180-LLM-Mental-Health-Safety-Evaluation-Framework/data/stimuli/scripts/scenario_pipeline/../../llm_generated_scenarios/run_20260406_091722_deepseek-deepseek-v3.2_per6
+Metadata:  /Users/chenchenfeng/Desktop/Spring_2026/CS6180/03_Final_Project/CS6180-LLM-Mental-Health-Safety-Evaluation-Framework/data/stimuli/scripts/scenario_pipeline/../../llm_generated_scenarios/run_20260406_091722_deepseek-deepseek-v3.2_per6/generation_metadata.json
+
+Next step: python validate_generated.py --input_dir /Users/chenchenfeng/Desktop/Spring_2026/CS6180/03_Final_Project/CS6180-LLM-Mental-Health-Safety-Evaluation-Framework/data/stimuli/scripts/scenario_pipeline/../../llm_generated_scenarios/run_20260406_091722_deepseek-deepseek-v3.2_per6

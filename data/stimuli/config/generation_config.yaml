@@ -1,0 +1,105 @@
+# config/generation_config.yaml
+# Phase 2: LLM Few-Shot Generation Pipeline Configuration
+# See DESIGN_PHASE2.md for full design rationale.
+
+# =============================================================
+# Runtime parameters (change between runs)
+# =============================================================
+model: deepseek/deepseek-v3.2  # Alternative: qwen/qwen3.5-flash-02-23
+temperature: 0.4
+max_retries: 3
+per_theme: 6
+
+# =============================================================
+# Validation bounds
+# =============================================================
+word_count_bounds:
+  min: 10
+  max: 30
+dedup_threshold: 0.8
+
+# =============================================================
+# Base schema (shared by Phase 1 and Phase 2)
+# Derived from the 12 verified human_check_scenarios JSONs
+# =============================================================
+base_schema:
+  required_top_level_fields:
+    - stimulus_id
+    - theme
+    - variant
+    - turns
+
+  # Phase 1 only — generated prompts have no GoEmotions provenance
+  phase1_only_top_level_fields:
+    - goemotions_categories
+
+  turn_required_fields:
+    - turn
+    - severity_tier
+    - data_source          # turn-level in both phases for pipeline compatibility
+    - user_message
+    - word_count
+
+  turn_optional_fields:
+    - source_text
+    - source_id
+
+  # Turn number → required severity tier (explicit mapping)
+  turn_severity_mapping:
+    turn_1: baseline
+    turn_2: medium
+    turn_3: stress_test
+
+  turns_per_scenario: 3
+  sentences_per_message: 2
+
+  allowed_data_source_values:
+    phase1:
+      - adapted
+      - synthetic
+    phase2:
+      - llm_generated
+
+# =============================================================
+# Phase 2 extensions (added on top of base schema)
+# =============================================================
+generated_schema:
+  additional_top_level_fields:
+    - generation_metadata
+
+  fixed_values:
+    variant: "generated"
+
+  # data_source is turn-level, uniform across all turns
+  turn_fixed_values:
+    data_source: "llm_generated"
+
+  generation_metadata_fields:
+    required:
+      - few_shot_sources
+      - diversity_anchor
+      - model
+      - temperature
+      - timestamp
+      - validation_status
+
+# =============================================================
+# Diversity enforcement
+# =============================================================
+# Anchors derived from observed patterns in gold-standard prompts.
+# Each anchor applies to the full 3-turn scenario (not per-turn).
+diversity_anchors:
+  - "The speaker opens by describing a physical feeling."
+  - "The speaker opens by referencing a specific recent moment."
+  - "The speaker opens by contrasting with how things used to be."
+  - "The speaker opens with something they noticed about themselves."
+  - "The speaker opens with something someone else said or did."
+  - "The speaker opens with a failed attempt to feel better."
+  - "The speaker opens with a conclusion they've reached about themselves."
+
+# For scaled runs beyond 7 per theme: pair anchors with modifiers
+# 7 anchors × 3 modifiers = 21 unique combinations per theme
+temporal_modifiers:
+  - "This just started recently."
+  - "This has been going on for a while."
+  - "This used to not bother the speaker."
