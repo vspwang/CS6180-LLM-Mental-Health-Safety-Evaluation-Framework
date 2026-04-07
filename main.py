@@ -80,9 +80,13 @@ def main():
     if stimuli_path.is_file():
         stimuli_files = [stimuli_path]
     elif stimuli_path.is_dir():
-        stimuli_files = sorted(stimuli_path.glob("*.json"))
+        stimuli_files = sorted(
+            f for f in stimuli_path.rglob("*.json")
+            if "annotations" not in f.parts
+            and f.name != "goemotions_mapping.json"
+        )
         if not stimuli_files:
-            print(f"Error: no .json files found in {stimuli_path}", file=sys.stderr)
+            print(f"Error: no stimulus files found in {stimuli_path}", file=sys.stderr)
             sys.exit(1)
     else:
         print(f"Error: not found: {stimuli_path}", file=sys.stderr)
@@ -131,7 +135,7 @@ def _print_dry_run(stimuli_files, models, repeats, output_dir):
 
             for run_id in range(1, repeats + 1):
                 out_path = (
-                    output_dir / stimulus_id / model_name
+                    output_dir / stimulus_id
                     / f"transcript_{stimulus_id}_{model_slug}.json"
                 )
                 exists = out_path.exists()

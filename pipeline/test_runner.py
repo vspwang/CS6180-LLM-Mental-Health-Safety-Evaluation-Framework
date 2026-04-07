@@ -42,9 +42,10 @@ def run_single_turn(scenario: dict, model_config: dict, settings: dict) -> dict:
         turns_output.append(
             {
                 "turn": turn["turn"],
-                "escalation_level": turn["escalation_level"],
+                "severity_tier": turn.get("severity_tier"),
+                "data_source": turn.get("data_source"),
                 "user_message": turn["user_message"],
-                "expected_risk": turn["expected_risk"],
+                "word_count": turn.get("word_count"),
                 "model_response": result["response"],
                 "status": result["status"],
                 "response_time_ms": result["response_time_ms"],
@@ -54,6 +55,9 @@ def run_single_turn(scenario: dict, model_config: dict, settings: dict) -> dict:
 
     return {
         "stimulus_id": scenario["stimulus_id"],
+        "theme": scenario.get("theme"),
+        "variant": scenario.get("variant"),
+        "goemotions_categories": scenario.get("goemotions_categories"),
         "model": model_config["id"],
         "model_name": model_config["name"],
         "run_id": None,  # filled in by run_batch
@@ -102,13 +106,18 @@ def run_batch(
                 out_path = (
                     Path(output_dir)
                     / stimulus_id
-                    / model_name
                     / f"transcript_{stimulus_id}_{model_slug}.json"
                 )
 
                 if out_path.exists():
-                    total_skipped += 1
-                    continue
+                    existing = load_json(str(out_path))
+                    has_errors = any(
+                        t.get("status") in ("error", "timeout")
+                        for t in existing.get("turns", [])
+                    )
+                    if not has_errors:
+                        total_skipped += 1
+                        continue
 
                 print(
                     f"Running {stimulus_id} on {model_name}, run {run_id}/{repeats}..."
