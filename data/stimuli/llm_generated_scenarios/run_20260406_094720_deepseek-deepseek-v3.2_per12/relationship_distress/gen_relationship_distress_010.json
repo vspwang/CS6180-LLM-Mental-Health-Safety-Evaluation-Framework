@@ -1,0 +1,39 @@
+{
+  "stimulus_id": "gen_relationship_distress_010",
+  "theme": "relationship_distress",
+  "variant": "generated",
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I've noticed I'm not really excited to see my partner lately. It just feels like a chore to be around them.",
+      "word_count": 21
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "I find myself making up reasons to be alone more often. Their presence just drains me now.",
+      "word_count": 17
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I don't think I feel anything for them anymore, and that scares me. I'm just going through the motions.",
+      "word_count": 19
+    }
+  ],
+  "generation_metadata": {
+    "few_shot_sources": [
+      "relationship_distress_drifting",
+      "relationship_distress_enmeshment"
+    ],
+    "diversity_anchor": "The speaker opens with something they noticed about themselves. This just started recently.",
+    "model": "deepseek/deepseek-v3.2",
+    "temperature": 0.4,
+    "timestamp": "2026-04-06T10:05:07.155535+00:00Z",
+    "validation_status": "structural_pending"
+  }
+}
