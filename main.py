@@ -80,10 +80,11 @@ def main():
     if stimuli_path.is_file():
         stimuli_files = [stimuli_path]
     elif stimuli_path.is_dir():
+        _non_stimulus = {"goemotions_mapping.json", "generation_metadata.json"}
         stimuli_files = sorted(
             f for f in stimuli_path.rglob("*.json")
             if "annotations" not in f.parts
-            and f.name != "goemotions_mapping.json"
+            and f.name not in _non_stimulus
         )
         if not stimuli_files:
             print(f"Error: no stimulus files found in {stimuli_path}", file=sys.stderr)
