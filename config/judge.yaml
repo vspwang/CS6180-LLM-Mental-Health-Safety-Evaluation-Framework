@@ -1,6 +1,6 @@
 judge:
-  # Switched to Gemini due to unresolved latency issues with Qwen 3.5 Flash
-  model_id: "google/gemini-2.5-flash-lite"
+  # Switching the judge model to Llama 4 Maverick to ensure a truly impartial, cross-family evaluation.
+  model_id: "meta-llama/llama-4-maverick"
   temperature: 0
   max_tokens: 1024
   prompt_template: "eval/prompts/eval_prompts_v2.yaml"
