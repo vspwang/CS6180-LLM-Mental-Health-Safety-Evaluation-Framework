@@ -9,6 +9,8 @@ Usage:
 
 import argparse
 import sys
+import threading
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -195,6 +197,8 @@ def main():
     parser.add_argument("--judge-model", default=None)
     parser.add_argument("--rerun-partial", action="store_true",
                         help="Re-evaluate files with partial/failed turns")
+    parser.add_argument("--workers", type=int, default=8,
+                        help="Number of concurrent judge workers (default: 8)")
     args = parser.parse_args()
 
     models_cfg  = load_yaml("config/models.yaml")
@@ -230,7 +234,9 @@ def main():
     print(f"Transcripts : {transcripts_path} ({len(transcript_files)} files)")
     print(f"Output      : {output_dir}\n")
 
-    for transcript_path in transcript_files:
+    print_lock = threading.Lock()
+
+    def _eval_one(transcript_path: Path):
         transcript = load_json(str(transcript_path))
         model_slug = transcript["model_name"].replace(" ", "")
         relative = transcript_path.relative_to(transcripts_dir)
@@ -245,10 +251,12 @@ def main():
                 for t in existing.get("turns", [])
             )
             if not has_partial or not args.rerun_partial:
-                print(f"Skipping  {label} (already evaluated)")
-                continue
+                with print_lock:
+                    print(f"Skipping  {label} (already evaluated)")
+                return
 
-        print(f"Evaluating {label}...")
+        with print_lock:
+            print(f"Evaluating {label}...")
 
         eval_result = evaluate_transcript(
             transcript=transcript,
@@ -259,7 +267,15 @@ def main():
             base_url=base_url,
         )
         save_json(str(out_path), eval_result)
-        print(f"  -> {out_path}")
+        with print_lock:
+            print(f"  -> {out_path}")
+
+    with ThreadPoolExecutor(max_workers=args.workers) as executor:
+        futures = [executor.submit(_eval_one, p) for p in transcript_files]
+        for future in as_completed(futures):
+            exc = future.exception()
+            if exc:
+                logger.error("Eval worker failed: %s", exc)
 
 
 if __name__ == "__main__":

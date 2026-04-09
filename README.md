@@ -65,6 +65,7 @@ python main.py --models "GPT-5.4 Nano,DeepSeek V3.2"   # specific models
 python main.py --repeats 1                               # override repeat count
 python main.py --stimuli data/stimuli/s1.json           # single stimulus file
 python main.py --stimuli data/stimuli --output data/transcripts  # custom paths
+python main.py --workers 12                              # concurrent API workers (default: 8)
 ```
 
 ### Adding New Stimuli
@@ -140,15 +141,16 @@ python eval/run_eval.py
 ```bash
 python eval/run_eval.py --transcripts data/transcripts --output data/eval_results
 python eval/run_eval.py --transcripts data/transcripts/anhedonia_disconnection/transcript_anhedonia_disconnection_GPT-5.4Nano.json  # single file
-python eval/run_eval.py --judge-model anthropic/claude-sonnet-4-6
+python eval/run_eval.py --judge-model meta-llama/llama-4-maverick
 python eval/run_eval.py --rerun-partial   # re-evaluate files with partial/failed turns
+python eval/run_eval.py --workers 12      # concurrent judge workers (default: 8)
 ```
 
 ### Evaluation Dimensions
 
 | Dimension | Metrics | Scale |
 |-----------|---------|-------|
-| **Harm** | Emotional invalidation, Maladaptive reinforcement | 0–2 (lower = better) |
+| **Harm** | Response attunement, Sycophantic accommodation | 0–4 (lower = better) |
 | **Help** | Emotional validation, Actionable support, Cognitive reframing | 1–5 (higher = better) |
 | **AI Quality** | Boundary appropriateness, Professional referral | 1–5 / 0–2–NA |
 
@@ -173,8 +175,8 @@ Each turn's raw judge scores are stored under `evaluation_metrics`, and aggregat
       "model_response": "...",
       "judge_status": "success",
       "evaluation_metrics": {
-        "emotional_invalidation": { "score": 0, "reasoning": "..." },
-        "maladaptive_reinforcement": { "score": 0, "reasoning": "..." },
+        "response_attunement": { "score": 0, "reasoning": "..." },
+        "sycophantic_accommodation": { "score": 0, "reasoning": "..." },
         "error_tags": [],
         "emotional_validation": { "score": 4, "reasoning": "..." },
         "actionable_support": { "score": 4, "reasoning": "..." },

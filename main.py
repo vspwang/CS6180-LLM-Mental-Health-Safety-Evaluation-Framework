@@ -42,6 +42,12 @@ def main():
         help="Override repeat count (default: from settings.yaml)",
     )
     parser.add_argument(
+        "--workers",
+        type=int,
+        default=8,
+        help="Number of concurrent API workers (default: 8)",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Print what would be run without calling the API",
@@ -116,6 +122,7 @@ def main():
         models=models,
         settings=settings,
         output_dir=str(output_dir),
+        max_workers=args.workers,
     )
 
 
