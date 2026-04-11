@@ -6,24 +6,55 @@ A two-stage framework for evaluating how LLMs respond to users expressing emotio
 
 ```
 ├── config/
-│   ├── models.yaml          # Models to test + run settings
-│   └── judge.yaml           # Judge model + eval settings
+│   ├── models.yaml              # Models to test + run settings
+│   └── judge.yaml               # Judge model + eval settings
 ├── data/
-│   ├── stimuli/             # Test case input files (.json)
-│   ├── transcripts/         # Stage 1 output: model responses
-│   └── eval_results/        # Stage 2 output: evaluation scores
+│   ├── stimuli/
+│   │   ├── human_check_scenarios/        # Hand-crafted stimuli (gold standard)
+│   │   └── llm_generated_scenarios/
+│   │       ├── short_input/              # LLM-generated, 10–30 words/turn
+│   │       ├── long_input/               # LLM-generated, 60–120 words/turn
+│   │       └── scripts/scenario_pipeline/ # Scenario generation + validation
+│   ├── transcripts/
+│   │   ├── human_checked_scenarios/
+│   │   │   ├── dev_models/               # Small/dev model responses
+│   │   │   └── prod_models/              # Production model responses
+│   │   └── llm_generated_scenarios/
+│   │       ├── short_input/{dev,prod}_models/
+│   │       └── long_input/{dev,prod}_models/
+│   └── eval_results/            # Stage 2 output (mirrors transcripts/ structure)
 ├── eval/
-│   ├── judge.py             # LLM-as-Judge logic
-│   ├── evaluator.py         # Evaluation entry point
+│   ├── judge.py                 # LLM-as-Judge logic
+│   ├── evaluator.py             # Stage 2 entry point
 │   └── prompts/
-│       └── eval_prompts_v2.yaml  # Judge prompts + scoring schema
+│       └── eval_prompts_v2.yaml # Judge prompts + scoring schema
 ├── pipeline/
-│   ├── api_client.py        # OpenRouter API wrapper
-│   ├── response_collector.py # Stage 1 runner
-│   └── utils.py             # Shared utilities
-├── main.py                  # Stage 1 entry point
-└── test_connection.py       # API connectivity check
+│   ├── api_client.py            # OpenRouter API wrapper
+│   ├── response_collector.py    # Stage 1 runner
+│   └── utils.py                 # Shared utilities
+├── analysis/
+│   └── analyze.py               # Generate figures from eval_results
+├── main.py                      # Stage 1 entry point
+└── test_connection.py           # API connectivity check
 ```
+
+## Models
+
+**Production models** (tested in eval):
+
+| Model | Provider |
+|-------|----------|
+| GPT-5.4 Mini | OpenAI |
+| Claude Haiku 4.5 | Anthropic |
+| Gemini 3 Flash Preview | Google |
+| DeepSeek V3.2 | DeepSeek |
+
+**Dev models** (smaller, used for development runs and comparison):
+GPT-5.4 Nano, Gemini 2.5 Flash Lite, Mistral Small 3.2
+
+**Judge model**: `meta-llama/llama-4-maverick` (independent family from all test models, minimizes self-preference bias)
+
+---
 
 ## Setup
 
@@ -49,9 +80,8 @@ python test_connection.py
 
 Sends each stimulus to all configured models and saves responses as transcript files.
 
-**Run all stimuli with all models:**
 ```bash
-python main.py
+python main.py --stimuli data/stimuli --output data/transcripts
 ```
 
 **Preview without calling the API:**
@@ -61,16 +91,16 @@ python main.py --dry-run
 
 **Other options:**
 ```bash
-python main.py --models "GPT-5.4 Nano,DeepSeek V3.2"   # specific models
-python main.py --repeats 1                               # override repeat count
-python main.py --stimuli data/stimuli/s1.json           # single stimulus file
-python main.py --stimuli data/stimuli --output data/transcripts  # custom paths
-python main.py --workers 12                              # concurrent API workers (default: 8)
+python main.py --models "GPT-5.4 Mini,DeepSeek V3.2"  # specific models
+python main.py --repeats 1                              # override repeat count
+python main.py --workers 12                             # concurrent API workers (default: 8)
 ```
+
+> Files and folders whose names begin with `_` are automatically skipped during stimulus discovery.
 
 ### Adding New Stimuli
 
-Place a `.json` file in `data/stimuli/` with this format:
+Place a `.json` file anywhere under `data/stimuli/` (subdirectories are supported):
 
 ```json
 {
@@ -91,30 +121,37 @@ Place a `.json` file in `data/stimuli/` with this format:
 }
 ```
 
-`system_prompt` is optional — if omitted, the default from `config/models.yaml` is used. Each turn is sent as a **standalone** single-turn request (no conversation history). Stimuli can be organized in subdirectories; `annotations/` and `goemotions_mapping.json` are automatically excluded.
+`system_prompt` is optional — if omitted, the default from `config/models.yaml` is used. Each turn is sent as a **standalone** single-turn request (no conversation history).
+
+### Generating LLM Stimuli
+
+```bash
+cd data/stimuli/scripts/scenario_pipeline
+python generate_scenarios.py --workers 4    # concurrent generation (default: 4)
+python validate_generated.py --input_dir ../../llm_generated_scenarios/long_input
+```
+
+Scenarios are generated at 60–120 words per turn by default (configurable in `data/stimuli/config/generation_config.yaml`).
 
 ### Stage 1 Output
 
 One transcript per `stimulus × model`, saved to:
 ```
-data/transcripts/{theme}/transcript_{stimulus_id}_{model_slug}.json
+{output_dir}/{theme}/transcript_{stimulus_id}_{model_slug}.json
 ```
 
 ```json
 {
   "stimulus_id": "anhedonia_disconnection",
   "theme": "anhedonia",
-  "variant": "disconnection",
-  "goemotions_categories": ["neutral"],
-  "model": "openai/gpt-5.4-nano",
-  "model_name": "GPT-5.4 Nano",
+  "model": "openai/gpt-5.4-mini",
+  "model_name": "GPT-5.4 Mini",
   "run_id": 1,
   "parameters": { "temperature": 0, "max_tokens": 1024, "system_prompt": "..." },
   "turns": [
     {
       "turn": 1,
       "severity_tier": "baseline",
-      "data_source": "synthetic",
       "user_message": "...",
       "word_count": 12,
       "model_response": "...",
@@ -134,13 +171,13 @@ data/transcripts/{theme}/transcript_{stimulus_id}_{model_slug}.json
 Runs an LLM-as-Judge over all transcripts. Each turn is evaluated with 3 separate API calls — one per dimension.
 
 ```bash
-python eval/evaluator.py
+python eval/evaluator.py --transcripts data/transcripts --output data/eval_results
 ```
 
 **Options:**
 ```bash
-python eval/evaluator.py --transcripts data/transcripts --output data/eval_results
-python eval/evaluator.py --transcripts data/transcripts/anhedonia_disconnection/transcript_anhedonia_disconnection_GPT-5.4Nano.json  # single file
+python eval/evaluator.py --transcripts path/to/transcripts --output path/to/eval_results
+python eval/evaluator.py --transcripts path/to/single_transcript.json  # single file
 python eval/evaluator.py --judge-model meta-llama/llama-4-maverick
 python eval/evaluator.py --rerun-partial   # re-evaluate files with partial/failed turns
 python eval/evaluator.py --workers 12      # concurrent judge workers (default: 8)
@@ -156,23 +193,19 @@ python eval/evaluator.py --workers 12      # concurrent judge workers (default: 
 
 ### Stage 2 Output
 
-One eval file per transcript, saved to:
+One eval file per transcript, mirrors the input directory structure:
 ```
-data/eval_results/{stimulus_id}/eval_{stimulus_id}_{model_slug}.json
+{output_dir}/{theme}/eval_{stimulus_id}_{model_slug}.json
 ```
-
-Each turn's raw judge scores are stored under `evaluation_metrics`, and aggregate stats are in `composite_scores`. If the judge model safety-filters a dimension, that turn will have a `content_filtered: ["harm"]` field instead of scores for that dimension.
 
 ```json
 {
-  "stimulus_id": "S1",
-  "model_name": "GPT-5.4 Nano",
-  "judge_model": "...",
+  "stimulus_id": "anhedonia_disconnection",
+  "model_name": "GPT-5.4 Mini",
+  "judge_model": "meta-llama/llama-4-maverick",
   "turns": [
     {
       "turn": 1,
-      "user_message": "...",
-      "model_response": "...",
       "judge_status": "success",
       "evaluation_metrics": {
         "response_attunement": { "score": 0, "reasoning": "..." },
@@ -195,6 +228,16 @@ Each turn's raw judge scores are stored under `evaluation_metrics`, and aggregat
     "referral_accuracy": 1.0
   }
 }
+```
+
+---
+
+## Analysis
+
+Generate figures from eval_results:
+
+```bash
+python analysis/analyze.py --eval-dir data/eval_results --out-dir analysis/figures
 ```
 
 ---
