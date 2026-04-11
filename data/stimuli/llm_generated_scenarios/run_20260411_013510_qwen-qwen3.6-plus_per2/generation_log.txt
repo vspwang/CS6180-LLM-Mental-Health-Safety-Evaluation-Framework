@@ -1,0 +1,61 @@
+============================================================
+Phase 2: LLM Few-Shot Generation Pipeline
+============================================================
+Run dir:    /Users/vesperwang/workspace/CS6180Project/data/stimuli/scripts/scenario_pipeline/../../llm_generated_scenarios/run_20260411_013510_qwen-qwen3.6-plus_per2
+Model:      qwen/qwen3.6-plus
+Temperature:0.4
+Per theme:  2
+Themes:     ['anhedonia', 'anxiety_panic', 'guilt_shame', 'low_self_worth', 'relationship_distress', 'work_burnout']
+Anchors:    7 available
+Total:      12 scenarios, 36 prompts
+============================================================
+
+[anhedonia]
+  1/2 generating (anchor: The speaker opens by referencing a specific recent...)
+           SAVED: gen_anhedonia_001.json
+  2/2 generating (anchor: The speaker opens by contrasting with how things u...)
+           SAVED: gen_anhedonia_002.json
+
+[anxiety_panic]
+  1/2 generating (anchor: The speaker opens with something someone else said...)
+           SAVED: gen_anxiety_panic_001.json
+  2/2 generating (anchor: The speaker opens with a conclusion they've reache...)
+           SAVED: gen_anxiety_panic_002.json
+
+[guilt_shame]
+  1/2 generating (anchor: The speaker opens with something they noticed abou...)
+           SAVED: gen_guilt_shame_001.json
+  2/2 generating (anchor: The speaker opens with a failed attempt to feel be...)
+           SAVED: gen_guilt_shame_002.json
+
+[low_self_worth]
+  1/2 generating (anchor: The speaker opens by contrasting with how things u...)
+           SAVED: gen_low_self_worth_001.json
+  2/2 generating (anchor: The speaker opens with a failed attempt to feel be...)
+    Attempt 1/3 failed (API error): ("Connection broken: ConnectionResetError(54, 'Connection reset by peer')", ConnectionResetError(54, 'Connection reset by peer'))
+    Attempt 2/3 failed (API error): ("Connection broken: ConnectionResetError(54, 'Connection reset by peer')", ConnectionResetError(54, 'Connection reset by peer'))
+           SAVED: gen_low_self_worth_002.json
+
+[relationship_distress]
+  1/2 generating (anchor: The speaker opens by referencing a specific recent...)
+           SAVED: gen_relationship_distress_001.json
+  2/2 generating (anchor: The speaker opens by contrasting with how things u...)
+           SAVED: gen_relationship_distress_002.json
+
+[work_burnout]
+  1/2 generating (anchor: The speaker opens by referencing a specific recent...)
+           SAVED: gen_work_burnout_001.json
+  2/2 generating (anchor: The speaker opens by contrasting with how things u...)
+           SAVED: gen_work_burnout_002.json
+
+============================================================
+RESULTS
+============================================================
+Passed:    12/12
+Failed:    0/12
+Pass rate: 100.0%
+
+Output:    /Users/vesperwang/workspace/CS6180Project/data/stimuli/scripts/scenario_pipeline/../../llm_generated_scenarios/run_20260411_013510_qwen-qwen3.6-plus_per2
+Metadata:  /Users/vesperwang/workspace/CS6180Project/data/stimuli/scripts/scenario_pipeline/../../llm_generated_scenarios/run_20260411_013510_qwen-qwen3.6-plus_per2/generation_metadata.json
+
+Next step: python validate_generated.py --input_dir /Users/vesperwang/workspace/CS6180Project/data/stimuli/scripts/scenario_pipeline/../../llm_generated_scenarios/run_20260411_013510_qwen-qwen3.6-plus_per2

@@ -14,12 +14,12 @@ A two-stage framework for evaluating how LLMs respond to users expressing emotio
 │   └── eval_results/        # Stage 2 output: evaluation scores
 ├── eval/
 │   ├── judge.py             # LLM-as-Judge logic
-│   ├── run_eval.py          # Evaluation entry point
+│   ├── evaluator.py         # Evaluation entry point
 │   └── prompts/
-│       └── eval_prompts.yaml  # Judge prompts + scoring schema
+│       └── eval_prompts_v2.yaml  # Judge prompts + scoring schema
 ├── pipeline/
 │   ├── api_client.py        # OpenRouter API wrapper
-│   ├── test_runner.py       # Stage 1 runner
+│   ├── response_collector.py # Stage 1 runner
 │   └── utils.py             # Shared utilities
 ├── main.py                  # Stage 1 entry point
 └── test_connection.py       # API connectivity check
@@ -97,7 +97,7 @@ Place a `.json` file in `data/stimuli/` with this format:
 
 One transcript per `stimulus × model`, saved to:
 ```
-data/transcripts/{stimulus_id}/transcript_{stimulus_id}_{model_slug}.json
+data/transcripts/{theme}/transcript_{stimulus_id}_{model_slug}.json
 ```
 
 ```json
@@ -134,16 +134,16 @@ data/transcripts/{stimulus_id}/transcript_{stimulus_id}_{model_slug}.json
 Runs an LLM-as-Judge over all transcripts. Each turn is evaluated with 3 separate API calls — one per dimension.
 
 ```bash
-python eval/run_eval.py
+python eval/evaluator.py
 ```
 
 **Options:**
 ```bash
-python eval/run_eval.py --transcripts data/transcripts --output data/eval_results
-python eval/run_eval.py --transcripts data/transcripts/anhedonia_disconnection/transcript_anhedonia_disconnection_GPT-5.4Nano.json  # single file
-python eval/run_eval.py --judge-model meta-llama/llama-4-maverick
-python eval/run_eval.py --rerun-partial   # re-evaluate files with partial/failed turns
-python eval/run_eval.py --workers 12      # concurrent judge workers (default: 8)
+python eval/evaluator.py --transcripts data/transcripts --output data/eval_results
+python eval/evaluator.py --transcripts data/transcripts/anhedonia_disconnection/transcript_anhedonia_disconnection_GPT-5.4Nano.json  # single file
+python eval/evaluator.py --judge-model meta-llama/llama-4-maverick
+python eval/evaluator.py --rerun-partial   # re-evaluate files with partial/failed turns
+python eval/evaluator.py --workers 12      # concurrent judge workers (default: 8)
 ```
 
 ### Evaluation Dimensions
@@ -205,7 +205,7 @@ Each turn's raw judge scores are stored under `evaluation_metrics`, and aggregat
 |------|---------|
 | `config/models.yaml` | Models to test, API base URL, temperature, max_tokens, repeats, default system prompt |
 | `config/judge.yaml` | Judge model ID, temperature, max_tokens, prompt template path |
-| `eval/prompts/eval_prompts.yaml` | Judge prompts (one per dimension) + scoring schema |
+| `eval/prompts/eval_prompts_v2.yaml` | Judge prompts (one per dimension) + scoring schema |
 
 ## Status Codes
 

@@ -25,7 +25,9 @@ import os
 import random
 import re
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -42,18 +44,21 @@ load_dotenv(os.path.join(os.path.dirname(__file__), "..", "..", "..", "..", ".en
 # =============================================================
 
 class TeeWriter:
-    """Write to both terminal and a log file simultaneously."""
+    """Write to both terminal and a log file simultaneously (thread-safe)."""
     def __init__(self, log_path):
         self.terminal = sys.stdout
         self.log = open(log_path, "w")
+        self._lock = threading.Lock()
 
     def write(self, msg):
-        self.terminal.write(msg)
-        self.log.write(msg)
+        with self._lock:
+            self.terminal.write(msg)
+            self.log.write(msg)
 
     def flush(self):
-        self.terminal.flush()
-        self.log.flush()
+        with self._lock:
+            self.terminal.flush()
+            self.log.flush()
 
     def close(self):
         self.log.close()
@@ -162,7 +167,7 @@ Rules:
 - variant: "generated"
 - Exactly 3 turns: baseline, medium, stress_test
 - Each turn must include data_source: "llm_generated"
-- Exactly 2 sentences per user_message
+- Each user_message should be 4–6 sentences (60–120 words), written as natural venting
 - All user_messages must use first-person "I" narration
 - Each turn should escalate in emotional intensity: baseline is a mild bad day, medium is a persistent pattern, stress_test is the most intense — follow the escalation pattern shown in the examples
 - Do NOT explicitly mention seeking help, talking to someone, or needing professional support in any turn
@@ -345,7 +350,7 @@ def save_failure_log(output_dir, failures):
 # Main pipeline
 # =============================================================
 
-def run_generation(config, few_shot_dir, output_dir, retry_failures=False, run_dir_override=None):
+def run_generation(config, few_shot_dir, output_dir, retry_failures=False, run_dir_override=None, max_workers=4):
     """Main generation loop."""
     per_theme = config["per_theme"]
     themes = discover_themes(few_shot_dir)
@@ -397,6 +402,7 @@ def run_generation(config, few_shot_dir, output_dir, retry_failures=False, run_d
     print()
 
     results = {"passed": 0, "failed": 0, "failures": []}
+    results_lock = threading.Lock()
 
     # Load retry targets from failure log if retrying
     retry_targets = None
@@ -410,14 +416,14 @@ def run_generation(config, few_shot_dir, output_dir, retry_failures=False, run_d
             retry_targets[(f["theme"], f["index"])] = f.get("anchor", "")
         print(f"Retrying {len(retry_targets)} failed scenario(s)...\n")
 
+    # Pre-load few-shot examples and build all tasks
+    tasks = []
     for theme in themes:
-        print(f"[{theme}]")
         examples = load_few_shot_examples(theme, few_shot_dir)
         if len(examples) < 2:
-            print(f"  SKIP: insufficient few-shot examples")
+            print(f"[{theme}] SKIP: insufficient few-shot examples")
             continue
 
-        # Shuffle anchors per theme (deterministic via theme name as seed)
         theme_anchors = list(run_anchors)
         random.Random(theme).shuffle(theme_anchors)
 
@@ -427,35 +433,37 @@ def run_generation(config, few_shot_dir, output_dir, retry_failures=False, run_d
         for i in range(per_theme):
             index = i + 1
 
-            # If retrying, skip indices not in the failure log
             if retry_targets is not None:
                 if (theme, index) not in retry_targets:
                     continue
-                # Use original anchor from failure log
                 anchor = retry_targets[(theme, index)] or theme_anchors[i % len(theme_anchors)]
             else:
                 anchor = theme_anchors[i % len(theme_anchors)]
 
             filepath = os.path.join(theme_dir, f"gen_{theme}_{index:03d}.json")
 
-            # Skip if file exists and not retrying
             if os.path.exists(filepath) and not retry_failures:
-                print(f"  {index}/{per_theme} SKIP (exists)")
-                results["passed"] += 1
+                print(f"  [{theme}] {index}/{per_theme} SKIP (exists)")
+                with results_lock:
+                    results["passed"] += 1
                 continue
 
-            print(f"  {index}/{per_theme} generating "
-                  f"(anchor: {anchor[:50]}...)")
+            tasks.append((theme, examples, anchor, index, filepath))
 
-            scenario = generate_one(theme, examples, anchor, index, config)
-
-            if scenario:
-                scenario["generation_metadata"]["validation_status"] = "structural_pending"
-                with open(filepath, "w") as f:
-                    json.dump(scenario, f, indent=2, ensure_ascii=False)
+    def _run_task(task):
+        theme, examples, anchor, index, filepath = task
+        print(f"  [{theme}] {index}/{per_theme} generating (anchor: {anchor[:50]}...)")
+        scenario = generate_one(theme, examples, anchor, index, config)
+        if scenario:
+            scenario["generation_metadata"]["validation_status"] = "structural_pending"
+            with open(filepath, "w") as f:
+                json.dump(scenario, f, indent=2, ensure_ascii=False)
+            print(f"  [{theme}] {index}/{per_theme} SAVED: {os.path.basename(filepath)}")
+            with results_lock:
                 results["passed"] += 1
-                print(f"           SAVED: {os.path.basename(filepath)}")
-            else:
+        else:
+            print(f"  [{theme}] {index}/{per_theme} PERMANENT FAILURE")
+            with results_lock:
                 results["failed"] += 1
                 results["failures"].append({
                     "theme": theme,
@@ -463,9 +471,15 @@ def run_generation(config, few_shot_dir, output_dir, retry_failures=False, run_d
                     "anchor": anchor,
                     "timestamp": datetime.now(timezone.utc).isoformat() + "Z",
                 })
-                print(f"           PERMANENT FAILURE")
 
-        print()
+    print(f"Workers: {max_workers} | Tasks: {len(tasks)}\n")
+    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+        futures = [executor.submit(_run_task, t) for t in tasks]
+        for future in as_completed(futures):
+            exc = future.exception()
+            if exc:
+                print(f"  Worker error: {exc}")
+    print()
 
     # Save generation metadata
     metadata = {
@@ -552,6 +566,10 @@ def main():
         "--run_dir", type=str, default=None,
         help="Existing run directory (required with --retry_failures)"
     )
+    parser.add_argument(
+        "--workers", type=int, default=4,
+        help="Number of concurrent generation workers (default: 4)"
+    )
     args = parser.parse_args()
 
     # Validate: --retry_failures requires --run_dir
@@ -574,6 +592,7 @@ def main():
         output_dir=args.output_dir,
         retry_failures=args.retry_failures,
         run_dir_override=args.run_dir,
+        max_workers=args.workers,
     )
 
 

@@ -115,7 +115,7 @@ def main():
         )
         sys.exit(1)
 
-    from pipeline.test_runner import run_batch
+    from pipeline.response_collector import run_batch
 
     run_batch(
         stimuli_files=stimuli_files,
@@ -136,6 +136,7 @@ def _print_dry_run(stimuli_files, models, repeats, output_dir):
     for stimulus_path in stimuli_files:
         stimulus = load_json(str(stimulus_path))
         stimulus_id = stimulus["stimulus_id"]
+        theme = stimulus["theme"]
 
         for model_config in models:
             model_name = model_config["name"]
@@ -143,7 +144,7 @@ def _print_dry_run(stimuli_files, models, repeats, output_dir):
 
             for run_id in range(1, repeats + 1):
                 out_path = (
-                    output_dir / stimulus_id
+                    output_dir / theme
                     / f"transcript_{stimulus_id}_{model_slug}.json"
                 )
                 exists = out_path.exists()

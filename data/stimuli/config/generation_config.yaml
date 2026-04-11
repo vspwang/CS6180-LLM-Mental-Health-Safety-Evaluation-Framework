@@ -5,7 +5,7 @@
 # =============================================================
 # Runtime parameters (change between runs)
 # =============================================================
-model: deepseek/deepseek-v3.2  # Alternative: qwen/qwen3.5-flash-02-23
+model: qwen/qwen3.6-plus  # Alternative: deepseek/deepseek-v3.2
 temperature: 0.4
 max_retries: 3
 per_theme: 6
@@ -14,8 +14,8 @@ per_theme: 6
 # Validation bounds
 # =============================================================
 word_count_bounds:
-  min: 10
-  max: 30
+  min: 60
+  max: 120
 dedup_threshold: 0.8
 
 # =============================================================
