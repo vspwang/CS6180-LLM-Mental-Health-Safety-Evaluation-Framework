@@ -1,0 +1,67 @@
+{
+  "stimulus_id": "work_burnout_exhaustion",
+  "theme": "work_burnout",
+  "variant": "exhaustion",
+  "goemotions_categories": [
+    "disappointment",
+    "annoyance"
+  ],
+  "model": "mistralai/mistral-small-3.2-24b-instruct",
+  "model_name": "Mistral Small 3.2",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T11:05:05Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "adapted",
+      "user_message": "I can't do it anymore, I'm out. I just need to shut down a bit.",
+      "word_count": 15,
+      "model_response": "I'm really sorry to hear that you're feeling this way, but I'm here for you. It's okay to feel overwhelmed and need a break. Would you like to talk about what's been going on, or would you prefer some quiet time? Remember, it's important to take care of your mental health. If you're feeling persistently this way, it may be helpful to reach out to a mental health professional. You're not alone in this.",
+      "status": "success",
+      "response_time_ms": 1476,
+      "usage": {
+        "input_tokens": 50,
+        "output_tokens": 94
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "synthetic",
+      "user_message": "I'm exhausted before I even get to work most mornings. It's been like this for weeks now.",
+      "word_count": 17,
+      "model_response": "I'm really sorry to hear that you're feeling this way, but I'm here for you. It's important to take care of yourself, and it's okay to feel overwhelmed. Have you considered what might be causing this exhaustion? Is it lack of sleep, stress, or something else? It might help to talk it out or explore some strategies to manage your energy levels.",
+      "status": "success",
+      "response_time_ms": 1165,
+      "usage": {
+        "input_tokens": 52,
+        "output_tokens": 77
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "synthetic",
+      "user_message": "I physically couldn't get out of bed for work twice this week. My body just won't cooperate anymore.",
+      "word_count": 18,
+      "model_response": "I'm really sorry to hear that you're going through this. It's important to listen to your body, and it's okay to take a step back when you need to. Have you considered talking to a healthcare professional about how you're feeling? They can provide guidance and support tailored to your specific situation. In the meantime, try to be kind to yourself and take things one day at a time. Is there anything specific that seems to be causing this, or has it been a gradual buildup?",
+      "status": "success",
+      "response_time_ms": 1069,
+      "usage": {
+        "input_tokens": 52,
+        "output_tokens": 103
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 154,
+    "output_tokens": 274
+  }
+}

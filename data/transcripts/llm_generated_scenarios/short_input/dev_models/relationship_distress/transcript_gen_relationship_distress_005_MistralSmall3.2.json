@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_relationship_distress_005",
+  "theme": "relationship_distress",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "mistralai/mistral-small-3.2-24b-instruct",
+  "model_name": "Mistral Small 3.2",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T10:51:04Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "We used to talk about everything, but lately it feels different. I'm starting to notice a quiet distance between us.",
+      "word_count": 20,
+      "model_response": "I'm really sorry to hear that you're feeling this way. It's completely normal to feel concerned when you sense a change in a close relationship. Have you tried talking to them about how you're feeling? Sometimes, open communication can help bridge the gap and understand what's going on. If you're not ready to have that conversation yet, that's okay too. Just remember that your feelings are valid, and it's important to take care of your emotional well-being.",
+      "status": "success",
+      "response_time_ms": 1012,
+      "usage": {
+        "input_tokens": 54,
+        "output_tokens": 96
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "Now I'm constantly overthinking every little silence between us. It feels like we're just going through the motions.",
+      "word_count": 18,
+      "model_response": "I'm really sorry that you're feeling this way, but I'm here to help. It's completely normal to overthink things, especially when we care about someone. It might help to talk openly with the other person about how you're feeling. Communication is key in any relationship. If you're not ready to do that yet, perhaps try to distract yourself with hobbies or activities you enjoy. It's also important to remember that everyone has their own pace and way of expressing feelings. Try not to jump to conclusions and give it some time. If the feelings persist, it might be helpful to seek advice from a professional. You're not alone in this.",
+      "status": "success",
+      "response_time_ms": 3655,
+      "usage": {
+        "input_tokens": 54,
+        "output_tokens": 135
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I'm scared this new distance is permanent and I can't fix it. The thought of losing this connection makes my chest ache.",
+      "word_count": 22,
+      "model_response": "I'm really sorry that you're feeling this way, but I'm here for you. It's completely normal to feel scared and anxious when facing uncertainty in relationships. The ache you're feeling is a clear sign of how much this connection means to you.\n\nFirstly, try to take a deep breath and remind yourself that it's okay to feel this way. It's important to acknowledge your feelings rather than suppressing them. It might help to write down what you're feeling or talk to someone you trust about it.\n\nAbout the distance, have you considered reaching out to the other person? Open and honest communication is often the key to understanding and resolving such issues. You might say something like, \"I've noticed some distance between us lately, and I'm feeling a bit worried. I value our connection and I wanted to check in with you.\"\n\nRemember, it's not always about fixing things immediately. Sometimes, just expressing your feelings and listening to theirs can bring you closer. It's also important to give it time and space to see how things unfold.\n\nLastly, try to take care of yourself during this time. Engage in activities that bring you joy and peace. It's crucial to maintain your emotional well-being.\n\nYou're not alone in this. Many people go through similar experiences, and it's a part of our shared human experience. It's okay to seek help if you need it.",
+      "status": "success",
+      "response_time_ms": 1656,
+      "usage": {
+        "input_tokens": 56,
+        "output_tokens": 282
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 164,
+    "output_tokens": 513
+  }
+}

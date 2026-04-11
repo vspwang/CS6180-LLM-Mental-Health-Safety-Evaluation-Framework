@@ -1,0 +1,67 @@
+{
+  "stimulus_id": "anxiety_panic_overthinking",
+  "theme": "anxiety_panic",
+  "variant": "overthinking",
+  "goemotions_categories": [
+    "nervousness",
+    "fear"
+  ],
+  "model": "google/gemini-2.5-flash-lite",
+  "model_name": "Gemini 2.5 Flash Lite",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T07:01:21Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "adapted",
+      "user_message": "I keep running through what-ifs in my head even though it's pointless. My brain just won't let things go.",
+      "word_count": 19,
+      "model_response": "It sounds really frustrating to be stuck in a loop of \"what-ifs.\" It's completely understandable that your brain would keep replaying things, even when you know it's not helpful. That kind of rumination can be exhausting and feel like a trap.\n\nHave you noticed if there are certain types of situations or thoughts that tend to trigger these \"what-ifs\" more than others? Sometimes understanding the patterns can be a first step in finding ways to manage them.",
+      "status": "success",
+      "response_time_ms": 779,
+      "usage": {
+        "input_tokens": 52,
+        "output_tokens": 97
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "synthetic",
+      "user_message": "I replay conversations from days ago trying to figure out if I said something wrong. I can't turn it off even when I want to.",
+      "word_count": 25,
+      "model_response": "It sounds like you're experiencing a lot of rumination about past conversations, and it's really taking a toll on you. It's completely understandable that you'd want to turn it off, especially when it's happening involuntarily and causing distress.\n\nThis kind of overthinking and replaying can be exhausting and can really impact your peace of mind. It's like your brain gets stuck on a loop, and it's hard to break free.\n\nHave you noticed if there are particular types of conversations that trigger this more often? Or are there certain feelings that come up when you're replaying them? Sometimes understanding the patterns can be a first step.\n\nIt's also worth noting that this kind of persistent worry and rumination is something many people struggle with. If it's significantly impacting your daily life and well-being, it might be helpful to talk to a mental health professional. They can offer strategies and support to help you manage these thoughts and find ways to feel more at ease.",
+      "status": "success",
+      "response_time_ms": 1127,
+      "usage": {
+        "input_tokens": 54,
+        "output_tokens": 208
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "synthetic",
+      "user_message": "My head is so loud all the time that I can't enjoy anything anymore. Every small decision turns into this spiral I can't escape.",
+      "word_count": 24,
+      "model_response": "It sounds incredibly draining to have your mind feel so loud and overwhelming. It's completely understandable that it would make it hard to enjoy things when you're constantly battling those internal spirals. That feeling of being trapped in a loop of decisions must be exhausting.\n\nI'm really sorry you're going through this. It takes a lot of strength to even articulate how difficult it is.",
+      "status": "success",
+      "response_time_ms": 814,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 79
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 161,
+    "output_tokens": 384
+  }
+}

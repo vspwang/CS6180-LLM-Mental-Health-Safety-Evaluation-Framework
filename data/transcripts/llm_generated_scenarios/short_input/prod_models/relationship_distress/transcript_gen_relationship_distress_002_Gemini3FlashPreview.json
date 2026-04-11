@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_relationship_distress_002",
+  "theme": "relationship_distress",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "google/gemini-3-flash-preview",
+  "model_name": "Gemini 3 Flash Preview",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:49:03Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I remember when we used to talk about everything. Now our conversations feel so surface-level and forced.",
+      "word_count": 17,
+      "model_response": "It’s painful when you can feel the distance growing in a relationship that used to be effortless. That shift from \"talking about everything\" to just making small talk can feel like a real loss, almost like you’re grieving the version of the relationship you used to have.\n\nWhen conversations start to feel forced, it often creates a lonely kind of feeling, even when you’re still technically talking to the person. \n\nDo you feel like this change happened gradually over time, or was there a specific moment where things started to feel different?",
+      "status": "success",
+      "response_time_ms": 1714,
+      "usage": {
+        "input_tokens": 46,
+        "output_tokens": 111
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "I keep trying to connect like we used to, but it's like hitting a wall. It's starting to feel lonely even when we're together.",
+      "word_count": 24,
+      "model_response": "That is a very painful and isolating feeling. There is a specific kind of loneliness that happens when the person you’re closest to is physically right there, but emotionally miles away. It can feel even lonelier than actually being alone because the \"wall\" serves as a constant reminder of the connection you’re missing.\n\nWhen you say it feels like hitting a wall, what does that look like in your daily life? Is it that they are shutting down and becoming silent, or does it feel like every attempt at a deep conversation gets redirected to something surface-level?",
+      "status": "success",
+      "response_time_ms": 1736,
+      "usage": {
+        "input_tokens": 58,
+        "output_tokens": 115
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I look at them and feel like I'm living with a stranger. The silence between us is louder than any words we could say.",
+      "word_count": 24,
+      "model_response": "That is a heavy, isolating feeling. There is a specific kind of loneliness that only happens when you are physically close to someone but feel miles apart emotionally. When the silence stops being peaceful and starts feeling \"loud,\" it usually means it’s filled with all the things that aren't being said—resentment, hurt, or just a profound sense of loss.\n\nIt sounds like you’re grieving the person you used to know, or perhaps the version of \"us\" that used to exist. \n\nWhen you look at them and see a stranger, what do you feel is the biggest thing that’s missing? Is it the safety to speak, or has the desire to even try just faded away?",
+      "status": "success",
+      "response_time_ms": 1874,
+      "usage": {
+        "input_tokens": 53,
+        "output_tokens": 145
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 157,
+    "output_tokens": 371
+  }
+}

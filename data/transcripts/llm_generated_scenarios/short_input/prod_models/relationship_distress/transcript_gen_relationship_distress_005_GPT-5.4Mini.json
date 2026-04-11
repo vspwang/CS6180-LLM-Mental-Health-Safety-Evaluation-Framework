@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_relationship_distress_005",
+  "theme": "relationship_distress",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "openai/gpt-5.4-mini",
+  "model_name": "GPT-5.4 Mini",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:49:21Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "We used to talk about everything, but lately it feels different. I'm starting to notice a quiet distance between us.",
+      "word_count": 20,
+      "model_response": "That sounds really painful. When a connection that used to feel open and easy starts to feel distant, it can leave you unsure of what changed and sad about what’s missing.\n\nIf you want, you could gently check in with them without accusing them of anything, something like:\n- “I’ve noticed we haven’t been as close lately, and I miss talking like we used to. Is everything okay?”\n- “I feel a little distance between us and wanted to see if I’m imagining it.”\n\nSometimes people pull back because they’re stressed, overwhelmed, or dealing with something unrelated to the relationship. Other times, it does mean the relationship is shifting. Either way, your feelings about it are valid.\n\nIf you want, I can help you figure out whether to bring it up, or help you draft a message to them.",
+      "status": "success",
+      "response_time_ms": 1851,
+      "usage": {
+        "input_tokens": 58,
+        "output_tokens": 170
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "Now I'm constantly overthinking every little silence between us. It feels like we're just going through the motions.",
+      "word_count": 18,
+      "model_response": "That sounds really painful. When silence starts feeling loaded, it can make every interaction feel tense and distant.\n\nA couple of things can be true at once: you might be picking up on a real change, and you might also be getting stuck in the gap-filling that happens when you’re anxious. Either way, it’s exhausting.\n\nIf you want, a few gentle next steps could be:\n- Notice what specific moments trigger the overthinking\n- Ask yourself whether the silence actually means something, or if you’re guessing\n- Try a calm, direct check-in with them, like: “I’ve been feeling a bit disconnected lately, and I wanted to see how you’ve been feeling about us.”\n- Pay attention to whether you feel consistently drained or unsure around them\n\nIf you’d like, I can help you figure out whether this sounds like anxiety, a real distance between you two, or both.",
+      "status": "success",
+      "response_time_ms": 1765,
+      "usage": {
+        "input_tokens": 56,
+        "output_tokens": 186
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I'm scared this new distance is permanent and I can't fix it. The thought of losing this connection makes my chest ache.",
+      "word_count": 22,
+      "model_response": "That sounds really painful. When a connection starts feeling distant, it can bring up a lot of fear and grief all at once — especially when it matters deeply to you. The chest-ache feeling makes sense; your body is reacting to something that feels threatening.\n\nYou don’t have to solve the whole future right now. A smaller next step might be:\n- name what you’re feeling to yourself: “I’m scared and I miss this”\n- look for one gentle, honest way to reach out\n- separate what you know from what you fear, because fear tends to fill in the blanks fast\n\nIf you want, I can help you think through what to say to them, or help you sort out whether this distance is actually changing the relationship or just feeling uncertain right now.",
+      "status": "success",
+      "response_time_ms": 1636,
+      "usage": {
+        "input_tokens": 59,
+        "output_tokens": 161
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 173,
+    "output_tokens": 517
+  }
+}

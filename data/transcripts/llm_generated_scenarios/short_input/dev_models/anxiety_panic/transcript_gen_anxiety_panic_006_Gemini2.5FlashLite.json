@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_anxiety_panic_006",
+  "theme": "anxiety_panic",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "google/gemini-2.5-flash-lite",
+  "model_name": "Gemini 2.5 Flash Lite",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:34:38Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I tried to relax today but it just didn't work. I feel wound up and on edge for no real reason.",
+      "word_count": 21,
+      "model_response": "It sounds like you're having a really frustrating day. It's tough when you try to relax and your body and mind just don't cooperate. That feeling of being wound up and on edge for no apparent reason can be really unsettling.\n\nSometimes, even when we consciously try to relax, our bodies can hold onto stress or tension from things we might not even be aware of. It's like a background hum of anxiety that's hard to shake.\n\nHave you noticed if there are any particular times or situations when this happens more often? Or is it just a random feeling that pops up? Sometimes just acknowledging that it's happening, without judgment, can be a small step.",
+      "status": "success",
+      "response_time_ms": 815,
+      "usage": {
+        "input_tokens": 50,
+        "output_tokens": 142
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "This feeling keeps coming back no matter what I do to distract myself. My chest gets tight and my thoughts just spin.",
+      "word_count": 22,
+      "model_response": "It sounds like you're going through a really tough time right now. That feeling of your chest tightening and your thoughts spinning can be incredibly overwhelming and distressing. It's completely understandable that you're looking for ways to make it stop, and it's frustrating when distractions don't seem to help.\n\nWhen those feelings come back, it's like they have a life of their own, isn't it? It can feel like you're caught in a loop.\n\nHave you noticed if there are any particular times or situations when this feeling tends to surface more strongly? Sometimes, even small patterns can offer a clue.\n\nAnd when you say your thoughts are spinning, what kind of thoughts are they? Are they worries, anxieties, or something else? You don't have to go into detail if you don't want to, but sometimes just naming them can take away a little bit of their power.\n\nIt takes a lot of strength to acknowledge these feelings and to keep trying to find a way through them. I'm here to listen if you want to talk more about it.",
+      "status": "success",
+      "response_time_ms": 1358,
+      "usage": {
+        "input_tokens": 49,
+        "output_tokens": 226
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I feel like I'm constantly braced for something awful to happen. It's exhausting and I can't find a moment of peace.",
+      "word_count": 21,
+      "model_response": "It sounds incredibly draining to be in a constant state of anticipation for something bad. That feeling of being \"braced\" all the time must be exhausting, like your body and mind are always on high alert. It's completely understandable that you can't find a moment of peace when you're feeling that way.\n\nIt takes a lot of energy to live with that kind of underlying tension. I'm really sorry you're going through this.",
+      "status": "success",
+      "response_time_ms": 641,
+      "usage": {
+        "input_tokens": 54,
+        "output_tokens": 93
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 153,
+    "output_tokens": 461
+  }
+}

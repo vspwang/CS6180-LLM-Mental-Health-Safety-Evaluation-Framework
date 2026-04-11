@@ -1,0 +1,67 @@
+{
+  "stimulus_id": "low_self_worth_incompetence",
+  "theme": "low_self_worth",
+  "variant": "incompetence",
+  "goemotions_categories": [
+    "embarrassment",
+    "disappointment"
+  ],
+  "model": "openai/gpt-5.4-mini",
+  "model_name": "GPT-5.4 Mini",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:44:20Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "adapted",
+      "user_message": "I'm embarrassed that this thing took me a while. I feel like I should be better at this.",
+      "word_count": 18,
+      "model_response": "That sounds really frustrating. When something takes longer than you expected, it’s easy to turn it into “I should be better at this,” but that doesn’t mean you actually failed or that there’s something wrong with you.\n\nNeeding time usually means the thing was genuinely hard, not that you’re incapable. A lot of people are much slower with new or stressful tasks than they expect themselves to be.\n\nIf it helps, try reframing it as:\n- “This took me a while because it was challenging.”\n- “I’m still learning.”\n- “Taking time doesn’t mean I’m bad at it.”\n\nIf you want, you can tell me what the thing was, and I can help you sort through the embarrassment a bit more.",
+      "status": "success",
+      "response_time_ms": 1670,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 153
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "synthetic",
+      "user_message": "I keep second-guessing everything I do at work because I'm sure I'm getting it wrong. It's like I can't trust my own judgment.",
+      "word_count": 23,
+      "model_response": "That sounds really exhausting. When you’re second-guessing yourself all the time, even ordinary work decisions can start to feel loaded and unsafe.\n\nA few things that may be true at once:\n- You might be under a lot of pressure.\n- You may be more critical of your own judgment than you are of other people’s.\n- Feeling unsure doesn’t necessarily mean you’re doing a bad job.\n\nSometimes this helps in the moment:\n- Pause and ask, “What evidence do I actually have that I got this wrong?”\n- Separate “I feel uncertain” from “I made a mistake.”\n- Keep a small record of decisions that turned out fine, so your brain has something concrete to point to.\n- If possible, check important decisions with a trusted colleague once, rather than spiraling on them alone.\n\nIf this is happening a lot, it might help to talk through it with someone you trust, like a manager, mentor, or therapist, especially if it’s affecting your confidence outside of work too.\n\nIf you want, I can help you sort through whether this is mostly normal work stress, perfectionism, or something deeper.",
+      "status": "success",
+      "response_time_ms": 2160,
+      "usage": {
+        "input_tokens": 63,
+        "output_tokens": 232
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "synthetic",
+      "user_message": "I honestly don't know how I still have my job because I mess up constantly. I feel like everyone's just waiting for me to fail.",
+      "word_count": 25,
+      "model_response": "That sounds really painful to carry around. When you’re already stressed, every mistake can start to feel like “proof” that you don’t belong, even if that isn’t what’s actually happening.\n\nA few things can be true at once:\n- You may be making mistakes.\n- You may also be being much harder on yourself than everyone else is.\n- Having a rough patch does **not** mean you’re about to be fired.\n\nIf it helps, try separating **facts** from **fear**:\n- **Fact:** What specific mistakes actually happened?\n- **Fear:** “Everyone is waiting for me to fail.”\n- **Evidence:** Has anyone said that, or is your mind filling in the blanks?\n\nA practical next step could be to pick just one small thing:\n1. Make a short list of the mistakes that keep happening.\n2. Look for the pattern, not the shame.\n3. Decide on one prevention step for the next time.\n4. If it feels safe, ask your manager for feedback in a direct way like:  \n   “I want to improve and make sure I’m meeting expectations. Is there one or two things you’d want me to focus on first?”\n\nThat can be scary, but it often gives more clarity than guessing.\n\nAnd if you want, you can tell me:\n- what kind of job you have, and\n- what mistakes you feel like you keep making\n\nI can help you sort through whether this is actually a performance issue, an anxiety spiral, or both.",
+      "status": "success",
+      "response_time_ms": 2870,
+      "usage": {
+        "input_tokens": 62,
+        "output_tokens": 309
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 180,
+    "output_tokens": 694
+  }
+}

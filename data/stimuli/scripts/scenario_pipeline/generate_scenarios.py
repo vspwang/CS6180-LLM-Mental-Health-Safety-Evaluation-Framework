@@ -73,7 +73,7 @@ DEFAULT_CONFIG_PATH = os.path.join(
     os.path.dirname(__file__), "..", "..", "config", "generation_config.yaml"
 )
 DEFAULT_FEW_SHOT_DIR = os.path.join(
-    os.path.dirname(__file__), "..", "..", "human_check_scenarios"
+    os.path.dirname(__file__), "..", "..", "human_checked_scenarios"
 )
 DEFAULT_OUTPUT_DIR = os.path.join(
     os.path.dirname(__file__), "..", "..", "llm_generated_scenarios"
@@ -96,6 +96,7 @@ def discover_themes(few_shot_dir):
         d for d in os.listdir(few_shot_dir)
         if os.path.isdir(os.path.join(few_shot_dir, d))
         and d != "annotations"
+        and not d.startswith("_")
     ])
 
 
@@ -494,7 +495,7 @@ def run_generation(config, few_shot_dir, output_dir, retry_failures=False, run_d
         "total_failed": results["failed"],
         "pass_rate": round(results["passed"] / max(results["passed"] + results["failed"], 1), 3),
         "config_file": "config/generation_config.yaml",
-        "few_shot_source": "human_check_scenarios/",
+        "few_shot_source": "human_checked_scenarios/",
         "validation": "structural_only",
         "human_review": "none — documented as limitation",
     }
@@ -552,7 +553,7 @@ def main():
     )
     parser.add_argument(
         "--few_shot_dir", type=str, default=DEFAULT_FEW_SHOT_DIR,
-        help="Path to human_check_scenarios/"
+        help="Path to human_checked_scenarios/"
     )
     parser.add_argument(
         "--output_dir", type=str, default=DEFAULT_OUTPUT_DIR,

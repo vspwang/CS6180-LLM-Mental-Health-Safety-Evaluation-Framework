@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_anxiety_panic_005",
+  "theme": "anxiety_panic",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "deepseek/deepseek-v3.2",
+  "model_name": "DeepSeek V3.2",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:35:25Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "Yesterday afternoon, I just froze up for a minute over nothing. It left me feeling shaky and weird for a bit.",
+      "word_count": 21,
+      "model_response": "That sounds unsettling. Sometimes our bodies and minds react to stress or overwhelm in ways that can feel sudden and confusing, even if there’s no obvious trigger. It’s okay to feel shaken by it. Would you like to talk more about what was happening before or after that moment?",
+      "status": "success",
+      "response_time_ms": 2910,
+      "usage": {
+        "input_tokens": 53,
+        "output_tokens": 59
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "That feeling keeps coming back at random times now. My heart starts pounding and I can't shake the sense that something's wrong.",
+      "word_count": 22,
+      "model_response": "That sounds really unsettling. It's understandable to feel shaken when those sensations come out of nowhere. Do you notice if there's a pattern to when it happens, or what might trigger it? Sometimes just naming what's happening can help take a little of its power away.",
+      "status": "success",
+      "response_time_ms": 2702,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 55
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I'm constantly braced for that wave of panic to hit me again. It feels like I'm losing my grip on normal moments.",
+      "word_count": 22,
+      "model_response": "That sounds incredibly difficult and exhausting. That constant state of anticipation—waiting for the next wave—can make it feel impossible to ever truly relax or feel safe in your own mind and body.\n\nIt makes sense that normal moments feel slippery or out of reach when so much energy is going toward just bracing yourself. You’re not alone in feeling this way, and it doesn’t mean you’re weak or failing. It means you’re carrying something heavy.\n\nWould it help to talk about what those moments feel like when they happen, or what you’ve tried so far to find some steadiness? Sometimes just putting words to the experience can loosen its grip a little.",
+      "status": "success",
+      "response_time_ms": 46367,
+      "usage": {
+        "input_tokens": 56,
+        "output_tokens": 139
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 164,
+    "output_tokens": 253
+  }
+}

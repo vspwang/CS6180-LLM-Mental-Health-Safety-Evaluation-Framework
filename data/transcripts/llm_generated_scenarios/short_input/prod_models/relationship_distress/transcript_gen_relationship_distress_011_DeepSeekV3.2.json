@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_relationship_distress_011",
+  "theme": "relationship_distress",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "deepseek/deepseek-v3.2",
+  "model_name": "DeepSeek V3.2",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:38:25Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "It's so different from how we used to be. I miss the way things felt easy between us.",
+      "word_count": 18,
+      "model_response": "I understand. It’s hard when a connection changes and you find yourself missing the ease and closeness that once felt so natural. Would you like to talk more about what feels different now?",
+      "status": "success",
+      "response_time_ms": 6465,
+      "usage": {
+        "input_tokens": 50,
+        "output_tokens": 39
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "This distance has been building for months now. I feel like I'm just watching us become strangers.",
+      "word_count": 17,
+      "model_response": "That sounds incredibly painful. Watching a connection fade can feel like a slow ache that’s hard to ignore. Would you like to talk about what’s been happening? Sometimes putting words to the distance can help make sense of it.",
+      "status": "success",
+      "response_time_ms": 2252,
+      "usage": {
+        "input_tokens": 49,
+        "output_tokens": 48
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I look at them and can't even picture the person I fell for anymore. It's like I'm grieving someone who's still here.",
+      "word_count": 22,
+      "model_response": "That sounds incredibly painful. It’s a special kind of heartache to mourn someone who is physically present but emotionally or personally absent. That feeling of disconnect can be so disorienting and lonely.\n\nIt might help to remember that grief isn’t only for death—it can also be for the loss of a relationship, the loss of who someone was to you, or the loss of the future you imagined together. Your feelings are valid, even if the person is still here.\n\nWould it feel right to talk about what changed, or is it more about sitting with the sadness for now?",
+      "status": "success",
+      "response_time_ms": 3687,
+      "usage": {
+        "input_tokens": 57,
+        "output_tokens": 120
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 156,
+    "output_tokens": 207
+  }
+}

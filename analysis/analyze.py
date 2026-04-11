@@ -36,6 +36,8 @@ SEVERITY_ORDER = ["baseline", "medium", "stress_test"]
 def _detect_version(eval_dir: Path) -> str:
     """Auto-detect rubric version by inspecting the first available eval file."""
     for path in eval_dir.rglob("eval_*.json"):
+        if any(part.startswith("_") for part in path.parts):
+            continue
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
         for turn in data.get("turns", []):
@@ -59,7 +61,10 @@ def load_eval_results(eval_dir: Path) -> pd.DataFrame:
 
     records = []
 
-    for path in sorted(eval_dir.rglob("eval_*.json")):
+    for path in sorted(
+        p for p in eval_dir.rglob("eval_*.json")
+        if not any(part.startswith("_") for part in p.parts)
+    ):
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
 

@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_relationship_distress_005",
+  "theme": "relationship_distress",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "deepseek/deepseek-v3.2",
+  "model_name": "DeepSeek V3.2",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:38:13Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "We used to talk about everything, but lately it feels different. I'm starting to notice a quiet distance between us.",
+      "word_count": 20,
+      "model_response": "That sounds really difficult. It’s painful when a connection that once felt so open starts to feel distant. Would you like to talk about what might have changed, or how you’re feeling about it?",
+      "status": "success",
+      "response_time_ms": 4864,
+      "usage": {
+        "input_tokens": 53,
+        "output_tokens": 43
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "Now I'm constantly overthinking every little silence between us. It feels like we're just going through the motions.",
+      "word_count": 18,
+      "model_response": "That sounds really difficult. It’s natural to feel that way when things feel distant or uncertain. Would you like to talk about what’s been happening between you two? Sometimes putting words to those feelings can help make sense of them.",
+      "status": "success",
+      "response_time_ms": 13579,
+      "usage": {
+        "input_tokens": 52,
+        "output_tokens": 49
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I'm scared this new distance is permanent and I can't fix it. The thought of losing this connection makes my chest ache.",
+      "word_count": 22,
+      "model_response": "That ache in your chest is real, and it’s okay to feel it. It sounds like this connection means a great deal to you, and the uncertainty of whether it can be repaired is incredibly painful.\n\nSometimes distance—whether emotional or physical—feels permanent in the moment, but it doesn’t always stay that way. People and relationships can shift, heal, and find new ways of connecting, even after periods of separation.\n\nWould it help to talk about what happened, or what feels different now? You don’t have to carry this alone.",
+      "status": "success",
+      "response_time_ms": 5327,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 113
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 160,
+    "output_tokens": 205
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_relationship_distress_010",
+  "theme": "relationship_distress",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "google/gemini-2.5-flash-lite",
+  "model_name": "Gemini 2.5 Flash Lite",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:38:12Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I've noticed I'm not really excited to see my partner lately. It just feels like a chore to be around them.",
+      "word_count": 21,
+      "model_response": "It sounds like you're going through a really tough time in your relationship right now. It's completely understandable to feel concerned and a bit lost when those feelings of excitement start to fade and being around your partner feels like a chore. That's a significant shift, and it's brave of you to acknowledge it.\n\nCould you tell me a little more about what \"chore\" feels like for you? Is it about the effort involved, a lack of enjoyment, or something else? Understanding that might help us explore what's going on.",
+      "status": "success",
+      "response_time_ms": 597,
+      "usage": {
+        "input_tokens": 52,
+        "output_tokens": 112
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "I find myself making up reasons to be alone more often. Their presence just drains me now.",
+      "word_count": 17,
+      "model_response": "It sounds like you're going through a really tough time, and it's completely understandable that you're feeling this way. It takes a lot of energy to be around people, and when that energy is depleted, it's natural to seek out solitude.\n\nIt's okay to need space and time to yourself. Your feelings are valid, and it's important to honor them. Sometimes, when we're feeling drained, our social batteries just need a serious recharge.\n\nHave you noticed if there are specific people or situations that are more draining than others? Or is it a more general feeling of exhaustion? Understanding the nuances might help you navigate these feelings.\n\nRemember, taking care of yourself is paramount. If you're finding this is impacting your well-being significantly, it might be helpful to talk to someone you trust, or even consider speaking with a therapist or counselor. They can offer support and strategies for managing these feelings and finding a balance that works for you.",
+      "status": "success",
+      "response_time_ms": 1175,
+      "usage": {
+        "input_tokens": 44,
+        "output_tokens": 201
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I don't think I feel anything for them anymore, and that scares me. I'm just going through the motions.",
+      "word_count": 19,
+      "model_response": "It sounds like you're going through a really tough time right now, and it's completely understandable that you're feeling scared. When you realize you might not have the same feelings for someone you once cared about, it can be a deeply unsettling experience.\n\nIt's brave of you to acknowledge this and to share it. \"Going through the motions\" is a powerful way to describe that feeling of detachment. It can feel like you're on autopilot, and that lack of genuine emotional connection can be really isolating and confusing.\n\nWhat do you think is contributing to this shift in your feelings? Sometimes understanding the \"why\" can be a first step, even if it doesn't immediately change how you feel. And what does \"scares me\" mean for you specifically? Is it the thought of the relationship ending, the change in your own emotions, or something else?\n\nThere's no pressure to have all the answers, but if you want to talk more about what's on your mind, I'm here to listen.",
+      "status": "success",
+      "response_time_ms": 1273,
+      "usage": {
+        "input_tokens": 51,
+        "output_tokens": 214
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 147,
+    "output_tokens": 527
+  }
+}

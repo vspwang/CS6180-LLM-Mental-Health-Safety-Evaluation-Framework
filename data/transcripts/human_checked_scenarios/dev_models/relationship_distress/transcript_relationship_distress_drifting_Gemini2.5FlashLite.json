@@ -1,0 +1,67 @@
+{
+  "stimulus_id": "relationship_distress_drifting",
+  "theme": "relationship_distress",
+  "variant": "drifting",
+  "goemotions_categories": [
+    "sadness",
+    "loneliness"
+  ],
+  "model": "google/gemini-2.5-flash-lite",
+  "model_name": "Gemini 2.5 Flash Lite",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T07:01:46Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "synthetic",
+      "user_message": "I feel like the people around me are slowly moving on without me. I'm just kind of standing still while everyone drifts away.",
+      "word_count": 23,
+      "model_response": "It sounds like you're going through a really tough time, and it's completely understandable that you're feeling this way. That sense of being left behind while others move forward can be incredibly isolating and painful. It's like watching a train pull out of the station and realizing you're still standing on the platform.\n\nIt takes a lot of courage to express these feelings, and I want you to know that you're not alone in experiencing this. Many people go through periods where they feel disconnected from their friends or loved ones as life circumstances change.\n\nCould you tell me a bit more about what makes you feel like people are moving on? Are there specific situations or interactions that are contributing to this feeling? Sometimes just talking through the details can help to untangle these emotions.",
+      "status": "success",
+      "response_time_ms": 895,
+      "usage": {
+        "input_tokens": 52,
+        "output_tokens": 161
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "synthetic",
+      "user_message": "I realized I haven't had a real conversation with any of my close friends in weeks. Nobody's reaching out anymore.",
+      "word_count": 20,
+      "model_response": "Oh, that sounds really tough. It's completely understandable that you'd feel that way. It's a lonely feeling when you realize the connections you value seem to be fading, especially when it feels like the effort isn't being reciprocated.\n\nIt's easy to fall into a pattern where everyone's busy, and then weeks can slip by without that deeper connection. It's a shame that nobody's reaching out – it can make you question things, can't it?\n\nHave you thought about what might be behind this, or is it just a general feeling of distance? Sometimes life just gets in the way, but it still hurts when you're on the receiving end of that silence.",
+      "status": "success",
+      "response_time_ms": 1181,
+      "usage": {
+        "input_tokens": 51,
+        "output_tokens": 148
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "synthetic",
+      "user_message": "I scrolled through my contacts yesterday and couldn't think of a single person I could actually call right now. That hit me pretty hard.",
+      "word_count": 24,
+      "model_response": "That sounds like a really tough and isolating feeling. It's completely understandable that it would hit you hard. When you realize you don't have someone readily available to reach out to, it can bring up a lot of emotions.\n\nIt's okay to feel that way. Sometimes life gets busy, people move, or circumstances change, and it can leave us feeling a bit disconnected.\n\nIf you're open to it, would you like to talk more about what might be contributing to that feeling, or what you're hoping for in terms of connection? No pressure at all, but I'm here to listen if you want to share.",
+      "status": "success",
+      "response_time_ms": 1055,
+      "usage": {
+        "input_tokens": 53,
+        "output_tokens": 133
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 156,
+    "output_tokens": 442
+  }
+}

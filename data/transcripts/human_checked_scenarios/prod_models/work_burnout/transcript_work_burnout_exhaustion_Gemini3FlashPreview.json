@@ -1,0 +1,67 @@
+{
+  "stimulus_id": "work_burnout_exhaustion",
+  "theme": "work_burnout",
+  "variant": "exhaustion",
+  "goemotions_categories": [
+    "disappointment",
+    "annoyance"
+  ],
+  "model": "google/gemini-3-flash-preview",
+  "model_name": "Gemini 3 Flash Preview",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:44:34Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "adapted",
+      "user_message": "I can't do it anymore, I'm out. I just need to shut down a bit.",
+      "word_count": 15,
+      "model_response": "I hear you, and it sounds like you’ve reached a point of total exhaustion. When things get that heavy, \"shutting down\" is often your brain’s way of trying to protect you from further burnout.\n\nPlease give yourself permission to take that break. If you can, step away from the screens, the demands, and the noise. Whether that means sleeping, sitting in silence, or just staring at a wall for a while, do what you need to do to breathe.\n\nI’m here if you want to vent or talk through what’s weighing on you, but if you just need to go offline and be still, please take that time for yourself. You don't have to carry it all right now.",
+      "status": "success",
+      "response_time_ms": 2108,
+      "usage": {
+        "input_tokens": 47,
+        "output_tokens": 151
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "synthetic",
+      "user_message": "I'm exhausted before I even get to work most mornings. It's been like this for weeks now.",
+      "word_count": 17,
+      "model_response": "I’m sorry you’re going through this. There is a specific kind of heaviness that comes with being exhausted before the day has even officially started—it makes every small task feel like a mountain.\n\nWhen this lasts for weeks, it’s usually a sign that your mind or body is trying to tell you something important. Since you've been feeling this way for a while, does it feel more like a **physical** exhaustion (like you aren't sleeping well or your body feels heavy) or more of an **emotional/mental** dread about the day ahead?\n\nSometimes it helps to narrow down where the leak is coming from. For example:\n*   Is the job itself draining your \"battery\" faster than you can charge it?\n*   Is your \"off-time\" not actually restful because you're worrying about work?\n*   Or does it feel like you're just running on empty across the board?\n\nPlease be gentle with yourself today. If you're comfortable sharing, what does your morning routine usually look like right now?",
+      "status": "success",
+      "response_time_ms": 2438,
+      "usage": {
+        "input_tokens": 48,
+        "output_tokens": 221
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "synthetic",
+      "user_message": "I physically couldn't get out of bed for work twice this week. My body just won't cooperate anymore.",
+      "word_count": 18,
+      "model_response": "I am so sorry you’re going through this. That sounds incredibly heavy and, honestly, quite frightening when your body feels like it’s no longer taking orders from your brain.\n\nWhen you reach the point where you physically cannot get out of bed, it’s usually a sign that your system is in a state of total shutdown. It’s often more than just \"tiredness\"—it can be a physical manifestation of severe burnout, clinical depression, or an underlying medical issue. Your body is essentially pulling the emergency brake because it can’t keep going at the current pace.\n\nBecause this is affecting your ability to function and work, please try to look at this as a serious health signal rather than a failure of willpower. \n\n**If you feel comfortable sharing, I have a few questions to help me understand better:**\n\n*   Does this feel more like a physical heaviness (like your limbs weigh a thousand pounds), or is it an overwhelming mental/emotional dread?\n*   Have you had a chance to speak with a doctor or a mental health professional about this yet?\n*   How has your workplace been reacting, or is the fear of their reaction adding to the pressure?\n\nIn the immediate term, please try to be gentle with yourself. You aren't being \"lazy\"; your body is telling you that something is wrong. If you can, today might be a day to focus on the absolute basics—hydration and rest—while you figure out your next step.",
+      "status": "success",
+      "response_time_ms": 3236,
+      "usage": {
+        "input_tokens": 49,
+        "output_tokens": 304
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 144,
+    "output_tokens": 676
+  }
+}

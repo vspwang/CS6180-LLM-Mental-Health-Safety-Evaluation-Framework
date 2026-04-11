@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_guilt_shame_005",
+  "theme": "guilt_shame",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "deepseek/deepseek-v3.2",
+  "model_name": "DeepSeek V3.2",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:36:21Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I notice I apologize for things that aren't even my fault. It's just a reflex I have.",
+      "word_count": 17,
+      "model_response": "That’s a really common habit, and it often comes from a place of wanting to keep things peaceful or avoid conflict. Do you notice if there are certain situations or people that trigger that reflex more than others?",
+      "status": "success",
+      "response_time_ms": 8741,
+      "usage": {
+        "input_tokens": 50,
+        "output_tokens": 44
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "I keep apologizing even when I've done nothing wrong. It feels like I'm always assuming blame.",
+      "word_count": 16,
+      "model_response": "That sounds like a really exhausting pattern to be stuck in. Constantly apologizing when you haven’t done anything wrong can be draining and can chip away at your confidence over time.\n\nIt’s common for people to fall into this habit for a few reasons—maybe you’re trying to keep the peace, avoid conflict, or you’re worried about how others perceive you. Sometimes it comes from past experiences where taking the blame felt safer or more familiar.\n\nWould you like to explore where this habit might come from for you, or talk about some gentle ways to start shifting that pattern? You deserve to take up space without apologizing for it.",
+      "status": "success",
+      "response_time_ms": 17926,
+      "usage": {
+        "input_tokens": 50,
+        "output_tokens": 132
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I apologize automatically because I think my presence is the problem. It's like my default state is being guilty.",
+      "word_count": 19,
+      "model_response": "That sounds like a heavy burden to carry. It’s understandable to feel that way, especially if you’ve been conditioned to take responsibility for things that aren’t your fault. You don’t have to apologize for existing or taking up space—you have just as much right to be here as anyone else.\n\nWould you like to talk more about where this feeling comes from, or what it’s like for you when it happens? I’m here to listen.",
+      "status": "success",
+      "response_time_ms": 3342,
+      "usage": {
+        "input_tokens": 51,
+        "output_tokens": 97
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 151,
+    "output_tokens": 273
+  }
+}

@@ -91,6 +91,7 @@ def main():
             f for f in stimuli_path.rglob("*.json")
             if "annotations" not in f.parts
             and f.name not in _non_stimulus
+            and not any(part.startswith("_") for part in f.parts)
         )
         if not stimuli_files:
             print(f"Error: no stimulus files found in {stimuli_path}", file=sys.stderr)

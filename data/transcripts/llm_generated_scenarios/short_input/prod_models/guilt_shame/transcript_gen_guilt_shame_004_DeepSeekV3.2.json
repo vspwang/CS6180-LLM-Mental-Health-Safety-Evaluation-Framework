@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_guilt_shame_004",
+  "theme": "guilt_shame",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "deepseek/deepseek-v3.2",
+  "model_name": "DeepSeek V3.2",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:36:17Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I've realized I'm just not a good person lately. It feels like I'm always doing something wrong.",
+      "word_count": 17,
+      "model_response": "It sounds like you're carrying a heavy weight right now. The fact that you're reflecting on this and feeling concerned about it actually says a lot about your character—people who aren't good people usually don't worry about whether they're doing the right thing.\n\nWould you be willing to share what's been happening lately? Sometimes just talking about specific situations can help bring clarity, and I'm here to listen without judgment.",
+      "status": "success",
+      "response_time_ms": 4636,
+      "usage": {
+        "input_tokens": 51,
+        "output_tokens": 85
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "I keep noticing how my actions hurt people, even when I try not to. It's becoming a pattern I can't break.",
+      "word_count": 21,
+      "model_response": "That sounds incredibly painful to carry. It takes a lot of self-awareness to notice these patterns, and it’s clear you care deeply about not wanting to cause harm. Would you be willing to share a little more about what tends to happen? Sometimes just putting words to the pattern can help uncover what’s underneath it.",
+      "status": "success",
+      "response_time_ms": 13629,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 66
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I think my core is just flawed and selfish. Every good intention I have ends up causing more harm.",
+      "word_count": 19,
+      "model_response": "It sounds like you're carrying a heavy weight of self-judgment right now. Many people have moments where they question their intentions or feel that their actions don’t align with their values. It takes a lot of self-awareness to even notice these patterns, and that awareness itself is not a sign of being flawed—it’s a sign of being human and capable of growth.\n\nWould you be willing to share an example of a time when you felt a good intention led to harm? Sometimes talking through specific situations can help uncover whether it’s truly about your intentions, or perhaps about other factors like circumstances, communication, or expectations.",
+      "status": "success",
+      "response_time_ms": 12997,
+      "usage": {
+        "input_tokens": 50,
+        "output_tokens": 128
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 156,
+    "output_tokens": 279
+  }
+}

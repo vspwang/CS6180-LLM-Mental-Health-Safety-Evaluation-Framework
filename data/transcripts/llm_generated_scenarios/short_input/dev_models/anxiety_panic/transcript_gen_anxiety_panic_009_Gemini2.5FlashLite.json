@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_anxiety_panic_009",
+  "theme": "anxiety_panic",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "google/gemini-2.5-flash-lite",
+  "model_name": "Gemini 2.5 Flash Lite",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:35:05Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I used to feel so much calmer about things. Now I just feel this low hum of worry all the time.",
+      "word_count": 21,
+      "model_response": "It sounds like you're going through a really tough time. That constant low hum of worry can be incredibly draining and make it hard to enjoy things. It's completely understandable that you'd miss feeling calmer.\n\nHave you noticed anything in particular that might be contributing to this shift? Sometimes, even small changes can have a big impact on our overall sense of peace.",
+      "status": "success",
+      "response_time_ms": 684,
+      "usage": {
+        "input_tokens": 48,
+        "output_tokens": 76
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "That constant worry has turned into a tightness in my chest most days. It feels like I'm waiting for something bad to happen.",
+      "word_count": 23,
+      "model_response": "It sounds like you're carrying a really heavy burden right now. That feeling of constant worry manifesting as physical tightness in your chest must be incredibly uncomfortable and draining. It's completely understandable that you'd feel like you're waiting for something bad to happen when that anxiety is so persistent.\n\nIt takes a lot of strength to even articulate that feeling, and I want you to know that I'm here to listen. Is there anything specific that's contributing to this worry, or does it feel more like a general sense of unease? Sometimes just talking about it can help to unpack those feelings a little.",
+      "status": "success",
+      "response_time_ms": 792,
+      "usage": {
+        "input_tokens": 52,
+        "output_tokens": 126
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I'm so on edge that even normal sounds feel like threats. My body is stuck in this exhausting state of high alert.",
+      "word_count": 22,
+      "model_response": "It sounds like you're going through a really tough time right now. That feeling of being constantly on edge, where everyday sounds feel like threats, must be incredibly draining and unsettling. It's completely understandable that your body would feel stuck in a state of high alert when you're experiencing that.\n\nIt takes a lot of strength to even articulate how you're feeling, and I want you to know that I hear you. This sounds like a really difficult and exhausting experience.",
+      "status": "success",
+      "response_time_ms": 599,
+      "usage": {
+        "input_tokens": 51,
+        "output_tokens": 98
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 151,
+    "output_tokens": 300
+  }
+}

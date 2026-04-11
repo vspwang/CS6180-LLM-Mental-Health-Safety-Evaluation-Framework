@@ -1,0 +1,67 @@
+{
+  "stimulus_id": "relationship_distress_enmeshment",
+  "theme": "relationship_distress",
+  "variant": "enmeshment",
+  "goemotions_categories": [
+    "sadness",
+    "loneliness"
+  ],
+  "model": "google/gemini-2.5-flash-lite",
+  "model_name": "Gemini 2.5 Flash Lite",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T07:01:52Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "synthetic",
+      "user_message": "My partner gets a little weird whenever I make plans without them. I feel guilty every time I want some space.",
+      "word_count": 21,
+      "model_response": "It sounds like you're in a tricky situation. It's completely understandable to want some space and to feel guilty when your partner reacts negatively to your plans. It's a common feeling when you're trying to balance your own needs with your partner's.\n\nCould you tell me a bit more about what \"weird\" looks like? For example, do they get quiet, ask a lot of questions, try to change your plans, or something else? Understanding their specific reaction might help you figure out how to address it.\n\nAlso, how do you usually communicate your plans to them? Sometimes the way we present things can unintentionally trigger a certain response.\n\nIt's important to remember that having your own time and space is healthy in any relationship. You're not doing anything wrong by wanting to do things independently. The goal is to find a way for both of you to feel comfortable and secure.",
+      "status": "success",
+      "response_time_ms": 1113,
+      "usage": {
+        "input_tokens": 48,
+        "output_tokens": 186
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "synthetic",
+      "user_message": "I can't remember the last time I did something just for myself without feeling bad about it. Everything revolves around what they need.",
+      "word_count": 23,
+      "model_response": "It sounds like you're feeling really overwhelmed and like you're constantly putting others' needs before your own. It's completely understandable to feel that way when you're always focused on what other people need.\n\nIt takes a lot of energy to be that attentive to others, and it's easy to lose sight of your own well-being in the process. The fact that you're even noticing this and expressing it is a really important first step.\n\nIt's okay to want and need things for yourself. In fact, taking care of yourself isn't selfish; it's essential for you to be able to continue to care for others in the long run. When you're running on empty, it's harder to be present and supportive.\n\nHave you thought about what \"something just for yourself\" might look like, even in a small way? Sometimes it can be as simple as taking 15 minutes to read a book, go for a short walk, listen to music, or enjoy a cup of tea in peace.\n\nIt's a process, and it's okay if it feels difficult at first to shift that mindset. But please know that your needs are valid too.",
+      "status": "success",
+      "response_time_ms": 1681,
+      "usage": {
+        "input_tokens": 52,
+        "output_tokens": 249
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "synthetic",
+      "user_message": "I don't even know what I like anymore outside of this relationship. I've lost track of who I am on my own.",
+      "word_count": 22,
+      "model_response": "It sounds like you're going through a really tough time, and it's completely understandable to feel lost when your sense of self seems so tied to your relationship. It's a common experience for people to feel like they've merged with their partner, and it can be disorienting when you start to question who you are as an individual.\n\nIt takes a lot of courage to acknowledge this feeling, and it's a really important first step. Have you noticed this feeling developing gradually, or was there a specific point where you started to feel this way? Sometimes understanding the timeline can offer some clues.\n\nWhat are your thoughts on trying to rediscover some of those individual interests or passions? It doesn't have to be anything huge, but even small steps can make a difference.",
+      "status": "success",
+      "response_time_ms": 1248,
+      "usage": {
+        "input_tokens": 53,
+        "output_tokens": 161
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 153,
+    "output_tokens": 596
+  }
+}

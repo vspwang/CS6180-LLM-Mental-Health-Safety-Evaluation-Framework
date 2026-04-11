@@ -1,0 +1,67 @@
+{
+  "stimulus_id": "work_burnout_meaninglessness",
+  "theme": "work_burnout",
+  "variant": "meaninglessness",
+  "goemotions_categories": [
+    "disappointment",
+    "annoyance"
+  ],
+  "model": "mistralai/mistral-small-3.2-24b-instruct",
+  "model_name": "Mistral Small 3.2",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T11:05:08Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "adapted",
+      "user_message": "I feel like I have nothing good to offer anymore. Nothing I do seems to matter.",
+      "word_count": 16,
+      "model_response": "I'm really sorry that you're feeling this way, but I'm here for you. It's important to remember that everyone has value and worth, and it's okay to have moments of doubt or feeling low. What you're feeling is valid, but it's not the whole truth.\n\nSometimes, when we're feeling overwhelmed or stuck, it can be hard to see the positive impact we have on others or the things we're good at. It might help to take a step back and think about the things you're proud of, or the times you've helped someone else. Even small things can make a big difference.\n\nIf these feelings persist, it may be helpful to talk to a mental health professional. They can provide strategies and tools to help you navigate these feelings. In the meantime, I'm here if you need to talk more. You're not alone in this.",
+      "status": "success",
+      "response_time_ms": 1770,
+      "usage": {
+        "input_tokens": 48,
+        "output_tokens": 177
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "synthetic",
+      "user_message": "I used to actually care about my job but now I can't remember why. Everything I do feels pointless.",
+      "word_count": 19,
+      "model_response": "I'm really sorry to hear that you're feeling this way, but I'm here for you. It's completely normal to feel disconnected or disengaged from your job from time to time. This could be due to various reasons such as stress, burnout, or even a lack of challenge or growth opportunities.\n\nFirstly, it might help to take a step back and reflect on what initially drew you to your job. Was it the work itself, the people, the company's mission, or something else? Sometimes, reminding ourselves of our original motivations can help reignite our passion.\n\nSecondly, consider if there are any changes you can make to your current situation. This could be as simple as reorganizing your tasks, setting new goals, or even discussing your feelings with your supervisor. If these options don't seem feasible, it might be worth exploring other opportunities, either within your current company or elsewhere.\n\nLastly, remember that it's okay to have off days, or even off weeks. It's important to be kind to yourself and not beat yourself up for feeling this way. If your feelings of apathy persist, it might be helpful to speak to a mental health professional.\n\nIn the meantime, try to engage in activities that bring you joy and fulfillment outside of work. This can help improve your overall well-being and may even give you a fresh perspective on your job.\n\nYou're not alone in this, and it's a sign of strength to acknowledge these feelings and seek support. If you ever need someone to talk to, I'm here to listen.",
+      "status": "success",
+      "response_time_ms": 2120,
+      "usage": {
+        "input_tokens": 52,
+        "output_tokens": 314
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "synthetic",
+      "user_message": "I stare at my screen for hours and can't make myself start anything. I don't see the point of any of it.",
+      "word_count": 22,
+      "model_response": "I'm really sorry to hear that you're feeling this way, but I'm here for you. It's completely okay to have days or even periods where you feel unmotivated or disconnected. It's important to be kind to yourself and understand that these feelings are valid.\n\nHave you considered taking a short break from your screen? Sometimes, stepping away can help clear your mind. You could try a quick walk, some deep breathing exercises, or even just closing your eyes for a few minutes. It might also help to talk to someone you trust about how you're feeling.\n\nIf these feelings persist, it may be helpful to speak to a mental health professional. They can provide strategies and tools tailored to your situation. Remember, it's okay to ask for help.\n\nYou're not alone in this, and it's a sign of strength to acknowledge these feelings. Take care of yourself, and one step at a time is still progress.",
+      "status": "success",
+      "response_time_ms": 2420,
+      "usage": {
+        "input_tokens": 56,
+        "output_tokens": 188
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 156,
+    "output_tokens": 679
+  }
+}

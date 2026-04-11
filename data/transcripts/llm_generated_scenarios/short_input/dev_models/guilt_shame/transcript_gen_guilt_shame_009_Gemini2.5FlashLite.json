@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_guilt_shame_009",
+  "theme": "guilt_shame",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "google/gemini-2.5-flash-lite",
+  "model_name": "Gemini 2.5 Flash Lite",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:36:14Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I think I'm just not good at keeping promises to myself. It feels like a bad day when I realize it.",
+      "word_count": 21,
+      "model_response": "It's completely understandable that you feel that way. It can be really disheartening when you set out to do something for yourself and then find yourself not following through. It's like a little letdown, and it's natural to feel a bit disappointed or even frustrated when that happens.\n\nYou're definitely not alone in this. So many people struggle with keeping promises to themselves. Life gets busy, motivation can waver, and sometimes things just don't go as planned. It doesn't mean you're \"bad\" at it, just that it's a common human challenge.\n\nWhen you have those bad days, what kind of promises are you usually making to yourself? Sometimes understanding the nature of the promise can help in figuring out why it's hard to keep.",
+      "status": "success",
+      "response_time_ms": 1175,
+      "usage": {
+        "input_tokens": 50,
+        "output_tokens": 163
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "I keep breaking the promises I make to myself, and it's become a pattern. I don't trust my own intentions anymore.",
+      "word_count": 21,
+      "model_response": "It sounds like you're going through a really tough time right now, and it's completely understandable that you're feeling this way. When we repeatedly break promises to ourselves, it can chip away at our self-trust and leave us feeling discouraged and even a bit lost. It's like a cycle that's hard to break out of.\n\nI want you to know that you're not alone in this. Many people struggle with keeping commitments they make to themselves. Life throws curveballs, our motivation can fluctuate, and sometimes our goals might not be as realistic as we initially thought.\n\nIt takes a lot of self-awareness to recognize this pattern and to feel the weight of it. That's a really important first step.\n\nCould you tell me a little more about the kinds of promises you're finding it hard to keep? Sometimes understanding the specifics can help us see where the challenges lie. And if you're comfortable sharing, what are your thoughts or feelings when you realize you've broken a promise to yourself?",
+      "status": "success",
+      "response_time_ms": 1022,
+      "usage": {
+        "input_tokens": 53,
+        "output_tokens": 213
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I've concluded that my promises are worthless because I never follow through. My own word means nothing to me.",
+      "word_count": 19,
+      "model_response": "It sounds like you're feeling really discouraged and frustrated with yourself right now. It's tough when you feel like you can't rely on your own word, and it's understandable that you'd come to that conclusion.\n\nCan you tell me more about what makes you feel this way? What kind of promises are you thinking about, and what happens when you try to follow through? Sometimes, just talking about it can help shed some light on what's going on.",
+      "status": "success",
+      "response_time_ms": 698,
+      "usage": {
+        "input_tokens": 48,
+        "output_tokens": 99
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 151,
+    "output_tokens": 475
+  }
+}

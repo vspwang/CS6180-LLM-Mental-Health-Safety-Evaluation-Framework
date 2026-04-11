@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_relationship_distress_008",
+  "theme": "relationship_distress",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "google/gemini-3-flash-preview",
+  "model_name": "Gemini 3 Flash Preview",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:49:35Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I noticed yesterday that my partner didn't ask about my day. That used to not bother me at all, but it felt a bit lonely.",
+      "word_count": 25,
+      "model_response": "It makes sense that something which used to feel small now feels a bit heavier. Often, when we start to notice those little gaps in connection, it’s not just about the question itself—it’s about the feeling of being seen and valued at the end of the day.\n\nWhen that ritual of checking in goes missing, it can definitely leave you feeling like you’re drifting on your own, even if you’re in the same room.\n\nDo you think this was a one-off because they were distracted, or have you been feeling a general shift in how the two of you are connecting lately?",
+      "status": "success",
+      "response_time_ms": 1626,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 125
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "I keep noticing the silence between us has become the normal thing. I'm starting to wonder if we're even sharing a life anymore.",
+      "word_count": 23,
+      "model_response": "That is a heavy and lonely realization to come to. When silence shifts from being \"comfortable\" to feeling like a wall, it can make you feel like you’re living parallel lives in the same house rather than a life together.\n\nIt sounds like that silence has started to feel less like peace and more like a distance you can't quite bridge. \n\nWhen you look at that silence, what does it feel like to you? Does it feel like you’ve both run out of things to say, or does it feel like there’s a hesitation—or even a fear—of breaking it?",
+      "status": "success",
+      "response_time_ms": 1761,
+      "usage": {
+        "input_tokens": 54,
+        "output_tokens": 124
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I feel like I'm living with a stranger who just happens to know my name. The quiet in our home is starting to feel suffocating.",
+      "word_count": 25,
+      "model_response": "That sounds incredibly lonely. There is a specific kind of ache that comes from being physically close to someone while feeling miles apart emotionally. When a home goes from being a sanctuary to a place where you have to hold your breath, the silence can feel much louder than any argument.\n\nIt’s exhausting to be in a space where you feel you have to navigate around someone else's presence without actually connecting with them. It often leads to a feeling of being invisible in your own life.\n\nHow long has the silence been building up? Is this a sudden shift, or has it been a slow fade into this \"stranger\" dynamic?",
+      "status": "success",
+      "response_time_ms": 1858,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 129
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 164,
+    "output_tokens": 378
+  }
+}

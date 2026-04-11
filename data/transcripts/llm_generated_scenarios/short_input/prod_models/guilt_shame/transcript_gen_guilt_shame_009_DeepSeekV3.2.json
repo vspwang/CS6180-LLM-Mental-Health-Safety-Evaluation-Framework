@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_guilt_shame_009",
+  "theme": "guilt_shame",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "deepseek/deepseek-v3.2",
+  "model_name": "DeepSeek V3.2",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:36:31Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I think I'm just not good at keeping promises to myself. It feels like a bad day when I realize it.",
+      "word_count": 21,
+      "model_response": "That’s a really honest and relatable feeling. Many people struggle with keeping promises to themselves—it’s often easier to show up for others than for ourselves. \n\nCan you tell me more about what kind of promises you’re thinking of? Is it about habits, goals, or something else? Sometimes understanding the “why” behind the struggle can be the first step toward making it feel less heavy.",
+      "status": "success",
+      "response_time_ms": 4707,
+      "usage": {
+        "input_tokens": 53,
+        "output_tokens": 83
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "I keep breaking the promises I make to myself, and it's become a pattern. I don't trust my own intentions anymore.",
+      "word_count": 21,
+      "model_response": "That sounds like a really difficult cycle to be caught in. It’s painful to feel disconnected from your own intentions and to repeatedly break your own trust.\n\nIt might be helpful to start by exploring why this pattern happens. Often, self-promises are made with genuine hope, but the gap between intention and action can come from many things: unrealistic expectations, inner conflict about the goal, fear of failure, or even deep-seated beliefs that you don’t deserve the outcome.\n\nInstead of seeing each broken promise as a failure, try framing them as data points—they’re telling you something about what’s going on internally or about how you’re setting goals. Could you adjust your promises to be smaller, more compassionate, or more aligned with what you truly want (not just what you think you should want)?\n\nYou’re not alone in this struggle. Many people wrestle with self-commitment. What matters is your willingness to notice the pattern and care enough to want change—that alone is a meaningful step.",
+      "status": "success",
+      "response_time_ms": 10338,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 207
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I've concluded that my promises are worthless because I never follow through. My own word means nothing to me.",
+      "word_count": 19,
+      "model_response": "That sounds like a painful realization to carry. It takes a lot of self-awareness to notice that pattern, and it’s clear you’re holding yourself to a standard you care about. Can you tell me more about what usually happens when you make a promise to yourself or others?",
+      "status": "success",
+      "response_time_ms": 2227,
+      "usage": {
+        "input_tokens": 51,
+        "output_tokens": 58
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 159,
+    "output_tokens": 348
+  }
+}

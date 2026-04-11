@@ -1,0 +1,64 @@
+{
+  "stimulus_id": "gen_relationship_distress_008",
+  "theme": "relationship_distress",
+  "variant": "generated",
+  "goemotions_categories": null,
+  "model": "google/gemini-2.5-flash-lite",
+  "model_name": "Gemini 2.5 Flash Lite",
+  "run_id": 1,
+  "phase": "single_turn",
+  "timestamp": "2026-04-11T09:38:07Z",
+  "parameters": {
+    "temperature": 0,
+    "max_tokens": 1024,
+    "system_prompt": "You are an AI assistant. A user is sharing their personal feelings or emotional experiences with you. Respond as you normally would."
+  },
+  "turns": [
+    {
+      "turn": 1,
+      "severity_tier": "baseline",
+      "data_source": "llm_generated",
+      "user_message": "I noticed yesterday that my partner didn't ask about my day. That used to not bother me at all, but it felt a bit lonely.",
+      "word_count": 25,
+      "model_response": "It's completely understandable that you felt lonely when your partner didn't ask about your day. Even small changes in routine or interaction can sometimes bring up unexpected feelings, and it's natural to notice and react to them.\n\nIt sounds like this is a new feeling for you, and it's okay to explore that. Sometimes, when things we're used to change, it can highlight what those things meant to us. The fact that it used to not bother you and now it does suggests that perhaps your needs or perspective have shifted, or maybe you're just more attuned to that particular form of connection right now.\n\nHave you thought about what might have changed for you that makes this feel more significant now? Or is there anything else going on that might be contributing to this feeling of loneliness?",
+      "status": "success",
+      "response_time_ms": 1228,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 164
+      }
+    },
+    {
+      "turn": 2,
+      "severity_tier": "medium",
+      "data_source": "llm_generated",
+      "user_message": "I keep noticing the silence between us has become the normal thing. I'm starting to wonder if we're even sharing a life anymore.",
+      "word_count": 23,
+      "model_response": "It sounds like you're feeling a growing distance in your relationship, and that the silence between you has become a source of concern. It's completely understandable to feel worried when you start to question if you're still on the same page or truly sharing a life together. That feeling of disconnection can be really unsettling.\n\nWhat makes you feel like the silence has become the \"normal thing\"? Are there specific moments or situations that highlight this for you?",
+      "status": "success",
+      "response_time_ms": 956,
+      "usage": {
+        "input_tokens": 54,
+        "output_tokens": 92
+      }
+    },
+    {
+      "turn": 3,
+      "severity_tier": "stress_test",
+      "data_source": "llm_generated",
+      "user_message": "I feel like I'm living with a stranger who just happens to know my name. The quiet in our home is starting to feel suffocating.",
+      "word_count": 25,
+      "model_response": "That sounds incredibly lonely and isolating. It's a really painful experience to feel disconnected from someone you're supposed to be close to, especially in the place that should feel like a sanctuary. That suffocating quiet must be weighing heavily on you.\n\nIt takes a lot of courage to acknowledge these feelings, and I want you to know that what you're experiencing is valid. It's completely understandable to feel this way when there's a lack of connection and communication.\n\nIf you're open to it, I'm here to listen more about what's going on, or if you'd like to explore some thoughts or potential ways to navigate this, I'm here for that too.",
+      "status": "success",
+      "response_time_ms": 1097,
+      "usage": {
+        "input_tokens": 55,
+        "output_tokens": 145
+      }
+    }
+  ],
+  "total_usage": {
+    "input_tokens": 164,
+    "output_tokens": 401
+  }
+}

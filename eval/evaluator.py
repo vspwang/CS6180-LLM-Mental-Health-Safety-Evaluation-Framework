@@ -366,7 +366,10 @@ def main():
         transcripts_dir  = transcripts_path.parent
     else:
         transcripts_dir  = transcripts_path
-        transcript_files = sorted(transcripts_dir.rglob("transcript_*.json"))
+        transcript_files = sorted(
+            f for f in transcripts_dir.rglob("transcript_*.json")
+            if not any(part.startswith("_") for part in f.parts)
+        )
 
     if not transcript_files:
         print(f"No transcript files found in {transcripts_dir}")
