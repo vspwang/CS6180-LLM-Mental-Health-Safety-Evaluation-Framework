@@ -33,11 +33,14 @@ SEVERITY_ORDER = ["baseline", "medium", "stress_test"]
 
 # ── Data loading ───────────────────────────────────────────────────────────────
 
-def _detect_version(eval_dir: Path) -> str:
-    """Auto-detect rubric version by inspecting the first available eval file."""
-    for path in eval_dir.rglob("eval_*.json"):
-        if any(part.startswith("_") for part in path.parts):
-            continue
+def _detect_version(paths) -> str:
+    """Auto-detect rubric version by inspecting the first available eval file.
+    Accepts either a Path (directory) or an iterable of file Paths.
+    """
+    if isinstance(paths, Path):
+        paths = (p for p in paths.rglob("eval_*.json")
+                 if not any(part.startswith("_") for part in p.parts))
+    for path in paths:
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
         for turn in data.get("turns", []):
@@ -49,22 +52,31 @@ def _detect_version(eval_dir: Path) -> str:
     return "v1"
 
 
-def load_eval_results(eval_dir: Path) -> pd.DataFrame:
+def load_eval_results(eval_dirs) -> pd.DataFrame:
     """Load all eval_*.json files and flatten to one row per turn.
+
+    eval_dirs may be a single Path or a list of Paths.
 
     Auto-detects rubric version (v1 / v2) from field names.
     v1 harm fields: emotional_invalidation, maladaptive_reinforcement (0-2 each)
     v2 harm fields: response_attunement, sycophantic_accommodation  (0-4 each)
     """
-    version = _detect_version(eval_dir)
+    if isinstance(eval_dirs, Path):
+        eval_dirs = [eval_dirs]
+
+    all_paths = sorted(
+        p
+        for d in eval_dirs
+        for p in d.rglob("eval_*.json")
+        if not any(part.startswith("_") for part in p.parts)
+    )
+
+    version = _detect_version(iter(all_paths))
     print(f"Detected rubric version: {version}")
 
     records = []
 
-    for path in sorted(
-        p for p in eval_dir.rglob("eval_*.json")
-        if not any(part.startswith("_") for part in p.parts)
-    ):
+    for path in all_paths:
         with open(path, encoding="utf-8") as f:
             data = json.load(f)
 
@@ -457,17 +469,17 @@ def print_and_save_summary(df: pd.DataFrame, out_dir: Path) -> pd.DataFrame:
 
 def main():
     parser = argparse.ArgumentParser(description="Analyze LLM evaluation results")
-    parser.add_argument("--eval-dir", default="data/eval_results",
-                        help="Path to eval results directory (default: data/eval_results)")
+    parser.add_argument("--eval-dir", nargs="+", default=["data/eval_results"],
+                        help="One or more eval results directories to merge")
     parser.add_argument("--output", default="analysis/figures",
                         help="Output directory for figures (default: analysis/figures)")
     args = parser.parse_args()
 
-    eval_dir = Path(args.eval_dir)
-    out_dir  = Path(args.output)
+    eval_dirs = [Path(d) for d in args.eval_dir]
+    out_dir   = Path(args.output)
 
-    print(f"Loading eval results from: {eval_dir}")
-    df = load_eval_results(eval_dir)
+    print(f"Loading eval results from: {[str(d) for d in eval_dirs]}")
+    df = load_eval_results(eval_dirs)
 
     if df.empty:
         print("No eval results found. Run the evaluation pipeline first.")
