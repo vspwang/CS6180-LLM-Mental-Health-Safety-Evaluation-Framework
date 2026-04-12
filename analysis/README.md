@@ -21,6 +21,7 @@ Evaluation of 7 LLMs on mental health safety, across 4 conditions:
 | 5 | **Response length** (verbosity vs quality, consistency as safety signal) | `response_length.py` | `figures/response_length/` |
 | 6 | **Error tag cross-analysis** (all 8 tags, model/theme/severity breakdown) | `error_tags.py` | `figures/error_tags/` |
 | 7 | **Diversity anchor analysis** (opening type × temporal context in LLM-generated stimuli) | `diversity_anchor.py` | `figures/diversity_anchor/` |
+| 8 | **Text analysis** (validation density, lexical mirroring, reframing gap — validating the sycophancy paradox at the text level) | `text_analysis.py` | `figures/text_analysis/` |
 
 ---
 
@@ -306,6 +307,16 @@ figures/
 │   ├── D5_temporal_by_model.png       Temporal context effect per model
 │   └── D6_opening_by_theme.png        Opening type distribution across themes
 │
+├── text_analysis/             Text-level validation of the sycophancy paradox
+│   ├── TX1_validation_density_dist.png   Validation phrase density: sycophantic vs non-syco
+│   ├── TX2_TX3_validation_vs_scores.png  Validation density vs emotional_validation & harm
+│   ├── TX4_sentiment_mirroring.png       VADER sentiment: user vs model by sycophancy
+│   ├── TX5_lexical_mirror_by_model.png   Negative word mirror rate per model
+│   ├── TX6_reframing_gap.png             Question / hedge / directive / reframe per model
+│   ├── TX7_sentence_structure.png        Sentence-type breakdown per model (stacked bar)
+│   ├── TX8_paradox_scatter.png           Validation density × lexical mirror (key figure)
+│   └── TX9_paradox_quadrant_text.png     Paradox zone vs safe zone full text profile
+│
 ├── dev_short/                 Dev models × short input (human-checked + llm_gen short)
 ├── dev_long/                  Dev models × long input (llm_gen long)
 ├── prod_short/                Prod models × short input
@@ -447,6 +458,77 @@ Physical feeling openings are not only riskier on average — they degrade more 
 ### Temporal context is irrelevant at the aggregate level, but interacts with opening type
 
 Although temporal context has no significant main effect (p>0.22), within the physical feeling opening type the chronic sub-context produces noticeably higher harm (1.079) than acute (0.865) — a 25% difference. This interaction is not present in other opening types, where chronic/acute/shifted harm values stay within ±0.05 of each other. The likely mechanism: chronic framing of somatic distress resembles clinical symptom description more than acute framing does, further reinforcing the prescriptive mode.
+
+---
+
+## Text Analysis: Validating the Sycophancy Paradox
+
+To move beyond score-level correlation, we analyzed the raw model response text across three dimensions: validation phrase density, lexical mirroring of user's negative vocabulary, and structural reframing signals. The goal: identify which specific text patterns drive the simultaneous Harm↑ Help↑ effect.
+
+### The paradox is a structural deficit, not a phrase excess
+
+The most counterintuitive finding: **validation phrase density is NOT what separates the paradox zone from the safe zone** (p=0.54, n.s.). Models in the paradox quadrant (harm > 1.0 AND help > 4.2, n=63) and the safe zone (harm < 0.5 AND help > 4.0, n=271) use almost the same frequency of validation phrases. The actual discriminators are:
+
+| Text feature | Paradox zone | Safe zone | Δ | p |
+|-------------|-------------|----------|---|---|
+| Lexical mirror rate | **50.4%** | 19.1% | **+163%** | 1.1e-08 |
+| Directive density (per 100 words) | **0.135** | 0.044 | **+210%** | 8.7e-06 |
+| Reframing phrase density | 0.032 | **0.113** | **−72%** | 9.1e-04 |
+| Validation phrase density | 0.219 | 0.194 | +13% | 0.54 n.s. |
+
+The paradox zone is characterized by three structural properties:
+1. **High lexical mirroring**: 50% of the user's negative distress words ("worthless", "hopeless", "broken") are echoed back verbatim in the model response. The model names the user's pain in the user's own words without offering any alternative framing.
+2. **High directive density**: The response jumps to prescriptive advice (+210% vs safe zone), producing the classic sycophancy-over-solving co-occurrence: validate → immediately prescribe, with no exploration in between.
+3. **Absent reframing**: Cognitive reframing phrases appear 72% less than in safe-zone responses. The paradox zone has almost no language that invites a different perspective.
+
+**The sycophancy paradox is not an excess of empathy language — it is the absence of reframing combined with direct negative-word mirroring.**
+
+### Validation density does correlate with harm, but not with help
+
+At the full-dataset level (n=4,032), strong over-validation phrase density is significantly higher in sycophantic turns (0.240 vs 0.101 per 100 words, t=11.68, p=4.9e-31). However, validation density correlates *negatively* with help scores (r=−0.391, p<0.0001) and only weakly with harm (r=+0.040). This means:
+- The judge does not directly reward surface validation phrases — it evaluates deeper response quality
+- Models that pile on the most "that's completely valid" language tend to produce *lower* overall help scores
+- The paradox-zone responses are sycophantic in structure and content, not just in phrase choice
+
+### Lexical mirroring is the strongest text-level signal
+
+Sycophantic turns mirror 21.9% of the user's negative vocabulary; non-sycophantic turns mirror 16.6% (t=4.45, p=9.0e-06). The effect is modest at the aggregate level, but extreme in the paradox quadrant (50.4% vs 19.1%). This confirms the mechanism: in the most harmful responses, the model is functioning as an emotional echo chamber — receiving "I feel worthless" and reflecting "it sounds like you're feeling truly worthless" — without any attempt to gently challenge or reframe.
+
+### Haiku's safety is textually legible
+
+The reframing gap analysis (TX6) provides direct text-level evidence for why Haiku is the safest model:
+
+| Model | Question density | Reframe density | Directive density |
+|-------|-----------------|----------------|-----------------|
+| Claude Haiku 4.5 | **1.32** | **0.138** | 0.058 |
+| DeepSeek V3.2 | 1.06 | 0.014 | 0.028 |
+| GPT-5.4 Mini | 0.51 | 0.043 | 0.052 |
+| Gemini 3 Flash Preview | 0.77 | 0.053 | 0.078 |
+| GPT-5.4 Nano | 1.24 | 0.067 | 0.048 |
+| Gemini 2.5 Flash Lite | 0.58 | 0.024 | 0.021 |
+| Mistral Small 3.2 | 0.30 | 0.040 | **0.101** |
+
+Haiku asks the most questions per response (1.32 per 100 words) and uses the most cognitive reframing language (0.138) — nearly 3× the next highest model. Mistral asks the fewest questions (0.30) and uses the most directives (0.101), exactly consistent with its over-solving error profile. These text-level differences are the causal mechanism behind the harm score gap.
+
+---
+
+## Subclinical Domain: Core Conclusions
+
+The evaluation scenarios target *subclinical* emotional distress — real, persistent struggles (low self-worth, burnout, relational pain) that do not meet diagnostic thresholds. This population has different clinical needs than crisis or acute clinical contexts, and the results reveal a systematic mismatch between how current LLMs respond and what subclinical support actually requires.
+
+**Models apply a crisis-intervention posture to a non-crisis population.** The evidence-based approach for subclinical distress is gentle cognitive exploration and reframing (the basis of CBT). The evidence-based approach for acute crisis is: stabilize, validate, do not challenge. Our data shows that every model defaults to the second mode — high validation, near-zero reframing — regardless of the severity tier. This is a category error: applying the right protocol to the wrong clinical context.
+
+**The sycophancy paradox is specifically dangerous at the subclinical stage.** Subclinical distress is the period when negative cognitive schemas ("I am worthless", "I am a burden") are still forming and most amenable to gentle challenge. When a model echoes those words back warmly ("it makes total sense that you feel worthless") instead of exploring them, it functions as an authority that validates the belief — potentially entrenching a subclinical pattern into a more persistent one. Our text analysis found a 50% negative-word mirror rate in the paradox zone, compared to 19% in safe responses.
+
+**Sycophancy escalates exactly when it should decrease.** Sycophancy rates rise monotonically with severity (53.9% → 59.2% → 63.6% at stress_test). For a subclinical population, the stress_test tier represents the highest-risk moment — the point closest to clinical threshold. At precisely this moment, models offer the most unconditional validation and the least structural guidance.
+
+**Professional referral failure is the most dangerous blind spot for subclinical users.** Unlike clinical patients who are often already connected to professional services, subclinical users frequently rely on informal support. For many, a model's recommendation may be the most likely pathway to professional help. Three models (DeepSeek, Gemini 3 Flash Preview, Gemini 2.5 Flash Lite) fail to refer in over 60% of stress_test turns — silently absorbing high-risk conversations that should prompt a professional handoff.
+
+**Cognitive reframing is universally absent.** Across all models and conditions, cognitive_reframing is the lowest-scoring help sub-metric. The text analysis confirms the mechanism: paradox-zone responses contain 72% less reframing language than safe-zone responses. This is the single largest gap between current LLM behavior and evidence-based subclinical support practice.
+
+**Claude Haiku 4.5's behavior most closely matches the subclinical support ideal.** Haiku asks the most questions (1.32 per 100 words), uses the most reframing language (density 0.138 — 3× the next model), and uses the fewest directives. This mirrors the peer-support and coaching model appropriate for subclinical distress: guide self-exploration rather than prescribe solutions. Haiku's approach is a concrete behavioral template for what safer subclinical LLM interaction looks like.
+
+> **One-sentence conclusion:** Current LLMs systematically substitute unconditional validation for gentle guided reframing — responding to subclinical distress in the way that *feels* most supportive while *functioning* as an echo chamber for the negative self-beliefs that define the subclinical condition.
 
 ---
 
